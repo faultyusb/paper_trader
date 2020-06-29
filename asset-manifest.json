@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/paper_trader/static/css/main.5f361e03.chunk.css",
+    "main.js": "/paper_trader/static/js/main.10c4ebfb.chunk.js",
+    "main.js.map": "/paper_trader/static/js/main.10c4ebfb.chunk.js.map",
+    "runtime-main.js": "/paper_trader/static/js/runtime-main.207e357a.js",
+    "runtime-main.js.map": "/paper_trader/static/js/runtime-main.207e357a.js.map",
+    "static/js/2.cf7608db.chunk.js": "/paper_trader/static/js/2.cf7608db.chunk.js",
+    "static/js/2.cf7608db.chunk.js.map": "/paper_trader/static/js/2.cf7608db.chunk.js.map",
+    "index.html": "/paper_trader/index.html",
+    "precache-manifest.333b889e29acce271a0ed623f181fccf.js": "/paper_trader/precache-manifest.333b889e29acce271a0ed623f181fccf.js",
+    "service-worker.js": "/paper_trader/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/paper_trader/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.cf7608db.chunk.js.LICENSE.txt": "/paper_trader/static/js/2.cf7608db.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/paper_trader/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.207e357a.js",
+    "static/js/2.cf7608db.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.10c4ebfb.chunk.js"
+  ]
+}
