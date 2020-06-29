@@ -1,0 +1,19 @@
+
+.nav_bar{
+    border: 5px solid red;
+    margin: 5;
+}
+
+li a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    justify-content: center;
+
+}
+
+img{
+    width: 8rem;
+
+}
