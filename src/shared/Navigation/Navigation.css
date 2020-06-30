@@ -6,10 +6,14 @@
     padding: 20px 10px;
     border: 1px solid #fff;
     background-color:#212F3C;
-
 }
-img{
+.nav__links{
+    list-style-type: none;
+}
+
+.logo{
     width: 7rem;
+    cursor: pointer;
 }
 
 
@@ -18,12 +22,6 @@ li, a{
     font-size: 1.6rem;
     color: white;
     text-decoration: none;
-    margin: 1rem;
-    background-color: green;
+    background-color: #212F3C;
 }
 
-ul{
-    list-style: none;
-    display: flex;
-    /* justify-content: space-between; */
-}
