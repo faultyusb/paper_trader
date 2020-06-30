@@ -1,19 +1,29 @@
-
 .nav_bar{
-    border: 5px solid red;
-    margin: 5;
-}
-
-li a {
-    text-decoration: none;
-}
-ul {
-    list-style-type: none;
-    justify-content: center;
+   display: flex;
+   margin-bottom: 5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid #fff;
+    background-color:#212F3C;
 
 }
-
 img{
-    width: 8rem;
+    width: 7rem;
+}
 
+
+li, a{
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: white;
+    text-decoration: none;
+    margin: 1rem;
+    background-color: green;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    /* justify-content: space-between; */
 }

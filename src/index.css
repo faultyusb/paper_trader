@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #17202A ;
+  font-family: 'Jaldi', sans-serif;
 }

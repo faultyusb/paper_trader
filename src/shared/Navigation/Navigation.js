@@ -9,20 +9,21 @@ function Navigation(){
         <div className="nav_bar">
             
             <img src={Logo} alt=""/>
+            <nav>
+                <ul className = "nav__links">
+                    <li>
+                        <Link to='/home_page'>Home</Link>
+                    </li>
 
-            <ul>
-                <li>
-                    <Link to='/home_page'>Home</Link>
-                </li>
+                    <li>
+                        <Link to='/portfolio'>My Portfolios</Link>
+                    </li>
 
-                <li>
-                    <Link to='/portfolio'>My Portfolios</Link>
-                </li>
-
-                <li>
-                    <Link to='/authenticate'>Login/Sign Up</Link>
-                </li>
-            </ul>
+                    <li>
+                        <Link to='/authenticate'>Login/Sign Up</Link>
+                    </li>
+                </ul>
+            </nav>
         </div>
     );
 
