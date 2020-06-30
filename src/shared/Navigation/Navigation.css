@@ -1,14 +1,22 @@
 .nav_bar{
-   display: flex;
-   margin-bottom: 5rem;
+    display: flex;
+    margin: 1rem;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
+    padding: 5px 10px;
     border: 1px solid #fff;
     background-color:#212F3C;
+    border-radius: 5px;
+}
+.nav_bar h1 {
+    color: #fff;
+    background-color: transparent;
+    font-size: 3rem;
 }
 .nav__links{
     list-style-type: none;
+    display: flex;
+    background-color: #212F3C;
 }
 
 .logo{
@@ -23,5 +31,13 @@ li, a{
     color: white;
     text-decoration: none;
     background-color: #212F3C;
+    margin:2rem;
+    padding:5px;
+    border-radius: 10px;
+}
+
+a:hover{
+    color: grey;
+    background-color:white;
 }
 

@@ -9,7 +9,7 @@ import Navigation from './shared/Navigation/Navigation.js';
 
 function App() {
   return (
-    <HashRouter basename="/">
+    <HashRouter basename="">
       <main>
         <Navigation />
         <Switch>

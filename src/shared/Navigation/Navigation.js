@@ -15,6 +15,7 @@ function Navigation(){
         <div className="nav_bar">
             
             <img src={Logo} alt="" className = "logo" onClick={redirect}/>
+            <h1>Stock Simulator!</h1>
             <nav>
                 <ul className = "nav__links">
                     <li>
