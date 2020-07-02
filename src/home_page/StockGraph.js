@@ -69,7 +69,7 @@ class CandleStickChartWithEdge extends React.Component {
 			<ChartCanvas height={700}
 				ratio={ratio}
 				width={1000}
-				margin={{ left: 90, right: 90, top: 150, bottom: 30 }}
+				margin={{ left: 90, right: 90, top: 130, bottom: 50 }}
 				type={type}
 				seriesName="MSFT"
 				data={data}
@@ -105,11 +105,14 @@ class CandleStickChartWithEdge extends React.Component {
 					height = {800}
 				>
 
-					<XAxis axisAt="bottom" orient="bottom"/>
-					<XAxis axisAt="top" orient="top" flexTicks />
-					<YAxis axisAt="right" orient="right" ticks={5} />
+					<XAxis axisAt="bottom" orient="bottom" stroke="#ffffff"/>
+					<XAxis axisAt="top" orient="top" flexTicks stroke="#ffffff" tickStroke="#ffffff"/>
+					<YAxis axisAt="right" orient="right" ticks={5} tickStroke="#ffffff"/>
 
-					<CandlestickSeries h/>
+                    <CandlestickSeries 
+                    stroke={d => d.close > d.open ? "#6BA583" : "#DB0000"}
+					wickStroke={d => d.close > d.open ? "#6BA583" : "#DB0000"}
+					fill={d => d.close > d.open ? "#6BA583" : "#DB0000"}/>
 
 					<LineSeries yAccessor={ema20.accessor()} stroke={ema20.stroke()} highlightOnHover />
 					<LineSeries yAccessor={ema50.accessor()} stroke={ema50.stroke()} highlightOnHover />
@@ -167,7 +170,7 @@ class CandleStickChartWithEdge extends React.Component {
 						]}
 					/>
 				</Chart>
-				<CrossHairCursor />
+				<CrossHairCursor stroke="#ffffff"/>
 			</ChartCanvas>
 		);
 	}

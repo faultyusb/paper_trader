@@ -9,7 +9,7 @@ import Navigation from './shared/Navigation/Navigation.js';
 
 function App() {
   return (
-    <HashRouter basename="">
+    <HashRouter basename="/">
       <main>
         <Navigation />
         <Switch>
@@ -25,13 +25,12 @@ function App() {
             <Authenticate/>
           </Route>
 
-          <Route path='/error'>
+          <Route path='/error' exact>
             <Error/>
           </Route>
 
           <Redirect to="/error" />
         </Switch>
-
       </main>
     </HashRouter>
   );

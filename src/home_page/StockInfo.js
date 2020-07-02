@@ -1,5 +1,6 @@
 import React from 'react';
 import StockGraph from './StockGraph.js';
+import './StockInfo.css';
 
 export default class StockInfo extends React.Component{
   constructor(props){
@@ -29,7 +30,7 @@ export default class StockInfo extends React.Component{
   }
 
   fetchStocks(){
-    const symbol = 'AMZN';
+    const symbol = 'AAPL';
     const API_KEY = 'TNPG40VN9O3OQ4PW';
     const OUTPT_SIZE_FULL = 0 ? 'full' :'compact';
     const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=${OUTPT_SIZE_FULL}&apikey=${API_KEY}`;
@@ -61,7 +62,9 @@ export default class StockInfo extends React.Component{
 
   render(){
     return (
+        <div className="stock__graph">
       <StockGraph data = {this.state.stocks}/>
+        </div>
     );
   }
 
