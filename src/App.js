@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HashRouter, Route, Redirect, Switch} from 'react-router-dom';
-import HomePage from './home_page/home_page.js';
+import HomePage from './home_page/HomePage/home_page.js';
 import Authenticate from './authenticate/authenticate.js';
 import Portfolio from './portfolio/portfolio.js';
 import Error from './shared/error/error.js';

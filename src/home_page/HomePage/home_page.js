@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StockInfo from './StockInfo';
+import StockInfo from '../StockInfo/StockInfo';
 import './home_page.css';
 
 export default class home_page extends React.Component{
@@ -29,7 +29,7 @@ export default class home_page extends React.Component{
                     <input type="text" value={this.state.value} onChange={this.handleChange}/>
                 </label>
             </form>
-        <h1>Showing Stock for: {this.state.search}</h1>
+        
 
             <div className="stock_graph">
                 <StockInfo symbol={this.state.search}/>

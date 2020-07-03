@@ -1,7 +1,7 @@
 import React from 'react';
-import StockGraph from './StockGraph.js';
-import StockTable from './StockTable.js';
-import StockMeta from './StockMeta.js';
+import StockGraph from '../StockGraph/StockGraph.js';
+import StockTable from '../StockTable/StockTable.js';
+import StockMeta from '../StockMeta/StockMeta.js';
 
 import './StockInfo.css';
 
@@ -11,10 +11,10 @@ export default class StockInfo extends React.Component{
     this.state = 
       {meta_data: 
         {
-          stock_info: "",
-          symbol: "",
-          refreshed: "",
-          time_zone: ""
+          stock_info: "-",
+          symbol: "-",
+          refreshed: "-",
+          time_zone: "-"
         },
       stocks: [
       {
