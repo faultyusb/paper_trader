@@ -26,9 +26,8 @@ export default class home_page extends React.Component{
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Search for Stocks
-                    <textarea value={this.state.value} onChange={this.handleChange}/>
+                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
                 </label>
-                <input type="submit" value="Submit"/>
             </form>
         <h1>Showing Stock for: {this.state.search}</h1>
 

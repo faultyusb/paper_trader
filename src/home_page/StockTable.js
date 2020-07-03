@@ -21,7 +21,7 @@ function StockTable(props){
                     </thead>    
                     <tbody>
                         <tr>
-                            <td>{stock.date.toString()}</td>
+                            <td>{stock.date.toString().slice(0, 15)}</td>
                             <td>{stock.open}</td>
                             <td>{stock.high}</td>
                             <td>{stock.low}</td>

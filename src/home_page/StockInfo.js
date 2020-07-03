@@ -1,14 +1,24 @@
 import React from 'react';
 import StockGraph from './StockGraph.js';
 import StockTable from './StockTable.js';
+import StockMeta from './StockMeta.js';
+
 import './StockInfo.css';
 
 export default class StockInfo extends React.Component{
   constructor(props){
     super(props);
-    this.state = {stocks: [
+    this.state = 
+      {meta_data: 
+        {
+          stock_info: "",
+          symbol: "",
+          refreshed: "",
+          time_zone: ""
+        },
+      stocks: [
       {
-        date: new Date("2020-07-08"),
+        date: new Date(),
         open: 0,
         high: 0,
         low: 0,
@@ -16,7 +26,7 @@ export default class StockInfo extends React.Component{
         volume: 0
       },
       {
-        date: new Date("2020-07-07"), 
+        date: new Date(), 
         open: 0,
         high: 0,
         low: 0,
@@ -55,22 +65,32 @@ export default class StockInfo extends React.Component{
   }
 
   fetchStocks(){
-    const symbol = this.props.symbol;
+    const SYMBOL = this.props.symbol;
     const API_KEY = 'TNPG40VN9O3OQ4PW';
-    const OUTPT_SIZE_FULL = 0 ? 'full' :'compact';
-    const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=${OUTPT_SIZE_FULL}&apikey=${API_KEY}`;
+    const FUNCTION_TYPE = 'Time Series (Daily)';
+    const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${SYMBOL}&outputsize='compact'&apikey=${API_KEY}`;
 
     fetch(API)
     .then(response=>response.json())
       .then(data=>{
+        const meta_data = data["Meta Data"];
+        this.setState({
+          meta_data: {
+            stock_info: meta_data["1. Information"],
+            symbol: meta_data["2. Symbol"],
+            refreshed: meta_data["3. Last Refreshed"],
+            time_zone: meta_data["5. Time Zone"]
+          }
+        });
+
         for (var key in data['Time Series (Daily)']){
           let temp = {};
           temp['date'] = new Date(key);
-          temp['open'] = parseInt(data['Time Series (Daily)'][key]['1. open']);
-          temp['high'] = parseInt(data['Time Series (Daily)'][key]['2. high']);
-          temp['low'] = parseInt(data['Time Series (Daily)'][key]['3. low']);
-          temp['close'] = parseInt(data['Time Series (Daily)'][key]['4. close']);
-          temp['volume'] = parseInt(data['Time Series (Daily)'][key]['5. volume']);
+          temp['open'] = parseInt(data[FUNCTION_TYPE][key]['1. open']);
+          temp['high'] = parseInt(data[FUNCTION_TYPE][key]['2. high']);
+          temp['low'] = parseInt(data[FUNCTION_TYPE][key]['3. low']);
+          temp['close'] = parseInt(data[FUNCTION_TYPE][key]['4. close']);
+          temp['volume'] = parseInt(data[FUNCTION_TYPE][key]['5. volume']);
 
           let joined = this.state.stocks.concat(temp);
           this.setState({stocks: joined});
@@ -78,6 +98,7 @@ export default class StockInfo extends React.Component{
       })
         .then(()=>{
           this.setState({stocks: this.state.stocks.reverse()});
+          console.log(this.state);
         }); 
 
   }
@@ -89,8 +110,13 @@ export default class StockInfo extends React.Component{
         <div className="stock__graph">
           <StockGraph data = {this.state.stocks}/>
         </div>
-        <div className="stock__table">
-          < StockTable latestStock={this.state.stocks[99] ?this.state.stocks[99]:this.state.stocks[0] }/>
+        <div className="all_stock__info">
+          <div className="stock__table">
+            < StockTable latestStock={this.state.stocks[99] ?this.state.stocks[99]:this.state.stocks[0] }/>
+          </div>
+          <div className="stock__meta">
+            <StockMeta meta_info={this.state.meta_data}/>
+          </div>
         </div>
       </div>
     );
