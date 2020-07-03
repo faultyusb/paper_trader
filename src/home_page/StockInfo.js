@@ -1,5 +1,6 @@
 import React from 'react';
 import StockGraph from './StockGraph.js';
+import StockTable from './StockTable.js';
 import './StockInfo.css';
 
 export default class StockInfo extends React.Component{
@@ -55,7 +56,6 @@ export default class StockInfo extends React.Component{
 
   fetchStocks(){
     const symbol = this.props.symbol;
-    console.log(symbol);
     const API_KEY = 'TNPG40VN9O3OQ4PW';
     const OUTPT_SIZE_FULL = 0 ? 'full' :'compact';
     const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=${OUTPT_SIZE_FULL}&apikey=${API_KEY}`;
@@ -78,7 +78,7 @@ export default class StockInfo extends React.Component{
       })
         .then(()=>{
           this.setState({stocks: this.state.stocks.reverse()});
-          console.log(this.state.stocks); 
+          console.log(this.state.stocks[99]);
         }); 
 
   }
@@ -86,9 +86,14 @@ export default class StockInfo extends React.Component{
 
   render(){
     return (
+      <div className="stock__elements">
         <div className="stock__graph">
-      <StockGraph data = {this.state.stocks}/>
+          <StockGraph data = {this.state.stocks}/>
         </div>
+        <div className="stock__table">
+          < StockTable latestStock={this.state.stocks[99] ?this.state.stocks[99]:this.state.stocks[0] }/>
+        </div>
+      </div>
     );
   }
 
