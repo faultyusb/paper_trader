@@ -78,7 +78,6 @@ export default class StockInfo extends React.Component{
       })
         .then(()=>{
           this.setState({stocks: this.state.stocks.reverse()});
-          console.log(this.state.stocks[99]);
         }); 
 
   }

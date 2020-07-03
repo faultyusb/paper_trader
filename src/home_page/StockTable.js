@@ -11,6 +11,7 @@ function StockTable(props){
                 <thead>
                     <tr>
                         {/* <th>Date</th>     */}
+                        <th>Date</th>
                         <th>Open</th>    
                         <th>High</th>    
                         <th>Low</th>    
@@ -20,7 +21,7 @@ function StockTable(props){
                     </thead>    
                     <tbody>
                         <tr>
-                            {/* <td>{props.date}</td> */}
+                            <td>{stock.date.toString()}</td>
                             <td>{stock.open}</td>
                             <td>{stock.high}</td>
                             <td>{stock.low}</td>
