@@ -49,7 +49,7 @@ class CandleStickChartWithEdge extends React.Component {
 			.options({ windowSize: 70, sourcePath: "volume" })
 			.merge((d, c) => {d.smaVolume70 = c;})
 			.accessor(d => d.smaVolume70);
-		const { type, data: initialData, width, ratio } = this.props;
+		const { type, data: initialData, ratio } = this.props;
 
 		const calculatedData = ema20(ema50(smaVolume70(initialData)));
 		const xScaleProvider = discontinuousTimeScaleProvider

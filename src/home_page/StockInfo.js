@@ -29,8 +29,33 @@ export default class StockInfo extends React.Component{
     this.fetchStocks();
   }
 
+  componentDidUpdate(prevProps){
+    if(this.props.symbol !== prevProps.symbol){
+      this.setState({stocks: [
+        {
+          date: new Date("2020-07-08"),
+          open: 0,
+          high: 0,
+          low: 0,
+          close: 0,
+          volume: 0
+        },
+        {
+          date: new Date("2020-07-07"), 
+          open: 0,
+          high: 0,
+          low: 0,
+          close: 0,
+          volume: 0
+        },
+      ]})
+      this.fetchStocks();
+    }
+  }
+
   fetchStocks(){
-    const symbol = 'AAPL';
+    const symbol = this.props.symbol;
+    console.log(symbol);
     const API_KEY = 'TNPG40VN9O3OQ4PW';
     const OUTPT_SIZE_FULL = 0 ? 'full' :'compact';
     const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=${OUTPT_SIZE_FULL}&apikey=${API_KEY}`;
@@ -39,7 +64,6 @@ export default class StockInfo extends React.Component{
     .then(response=>response.json())
       .then(data=>{
         for (var key in data['Time Series (Daily)']){
-          let count = 0;
           let temp = {};
           temp['date'] = new Date(key);
           temp['open'] = parseInt(data['Time Series (Daily)'][key]['1. open']);
