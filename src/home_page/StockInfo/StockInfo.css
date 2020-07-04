@@ -1,3 +1,9 @@
 .stock__elements{
     display: flex;
 }
+
+.all_stock__info{
+    margin-top: 7.8rem;
+    width: 25rem;
+}
+

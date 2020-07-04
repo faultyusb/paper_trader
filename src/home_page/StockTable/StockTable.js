@@ -1,34 +1,45 @@
 import React from 'react';
-
 import Table from 'react-bootstrap/Table'
+
+import './StockTable.css';
+
 function StockTable(props){
     
     const stock=props.latestStock;
     
     return (
         <div className="stock__table">
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                        {/* <th>Date</th>     */}
-                        <th>Date</th>
-                        <th>Open</th>    
-                        <th>High</th>    
-                        <th>Low</th>    
-                        <th>Close</th>    
-                        <th>Volume</th>    
-                    </tr>
-                    </thead>    
-                    <tbody>
-                        <tr>
-                            <td>{stock.date.toString().slice(0, 15)}</td>
-                            <td>{stock.open}</td>
-                            <td>{stock.high}</td>
-                            <td>{stock.low}</td>
-                            <td>{stock.close}</td>
-                            <td>{stock.volume}</td>
-                        </tr>
-                    </tbody>
+            <Table>
+                <tr>
+                    <th>Date</th>
+                    <td>{stock.date.toString().slice(0, 15)}</td>
+                </tr>
+
+                <tr>
+                    <th>Open</th>
+                    <td>{stock.open}</td>
+                </tr>
+
+                <tr>
+                    <th>High</th>
+                    <td>{stock.high}</td>
+                </tr>
+
+                <tr>
+                    <th>Low</th>
+                    <td>{stock.low}</td>
+                </tr>
+
+                <tr>
+                    <th>Close</th>
+                    <td>{stock.close}</td>
+                </tr>
+
+                <tr>
+                    <th>Volume</th>
+                    <td>{stock.volume}</td>
+                </tr>
+
             </Table>    
 
         </div>

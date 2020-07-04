@@ -14,10 +14,10 @@ export default class home_page extends React.Component{
     }
     handleSubmit(event){
         console.log("submitting!", this.state.search);
-        this.setState({search: this.state.value.toUpperCase()});
+        this.setState({search: this.state.value});
     }
     handleChange(event){
-        this.setState({value: event.target.value});
+        this.setState({value: event.target.value.toUpperCase()});
     }
     
 

@@ -98,7 +98,6 @@ export default class StockInfo extends React.Component{
       })
         .then(()=>{
           this.setState({stocks: this.state.stocks.reverse()});
-          console.log(this.state);
         }); 
 
   }
@@ -111,11 +110,11 @@ export default class StockInfo extends React.Component{
           <StockGraph data = {this.state.stocks}/>
         </div>
         <div className="all_stock__info">
-          <div className="stock__table">
-            < StockTable latestStock={this.state.stocks[99] ?this.state.stocks[99]:this.state.stocks[0] }/>
-          </div>
           <div className="stock__meta">
             <StockMeta meta_info={this.state.meta_data}/>
+          </div>
+          <div className="stock__table2">
+            < StockTable latestStock={this.state.stocks[99] || this.state.stocks[0] }/>
           </div>
         </div>
       </div>
