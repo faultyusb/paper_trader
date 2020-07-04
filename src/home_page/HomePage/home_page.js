@@ -25,12 +25,16 @@ export default class home_page extends React.Component{
         console.log(this.state.search)
         return(
         <div className="home_page">
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Search for Stocks
-                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                </label>
-            </form>
+            <div className="stock__search">
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Search for Stocks
+                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                        <input type="submit" value="Submit"/>
+                    </label>
+                </form>
+            </div>
+            
         
 
             <div className="stock_graph">
