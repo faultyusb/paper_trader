@@ -3,6 +3,8 @@ import React from 'react';
 import StockInfo from '../StockInfo/StockInfo';
 import './home_page.css';
 
+//TODO: need to handle if API fails
+
 export default class home_page extends React.Component{
     constructor(props){
         super(props);
@@ -12,7 +14,7 @@ export default class home_page extends React.Component{
     }
     handleSubmit(event){
         console.log("submitting!", this.state.search);
-        this.setState({search: this.state.value});
+        this.setState({search: this.state.value.toUpperCase()});
     }
     handleChange(event){
         this.setState({value: event.target.value});
