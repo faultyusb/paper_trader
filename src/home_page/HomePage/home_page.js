@@ -22,7 +22,6 @@ export default class home_page extends React.Component{
     
 
     render(){
-        console.log(this.state.search)
         return(
         <div className="home_page">
             <div className="stock__search">
@@ -35,11 +34,11 @@ export default class home_page extends React.Component{
                 </form>
             </div>
             
-        
-
+    
             <div className="stock_graph">
                 <StockInfo symbol={this.state.search}/>
             </div>
+            
         </div>);
     }
 }

@@ -4,6 +4,21 @@
 
 .all_stock__info{
     margin-top: 7.8rem;
-    width: 25rem;
+    width: 55rem;
+    display: flex;
+}
+
+.purchase__container{
+    border: 5px solid white;
+    margin-left: 2rem;
+    height: 31.7rem;
+    width: 100%;
+    border-radius: 10px;
+    
+}
+
+.purchase{
+   width: 100%;
+   height: 90%;
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import StockGraph from '../StockGraph/StockGraph.js';
 import StockTable from '../StockTable/StockTable.js';
 import StockMeta from '../StockMeta/StockMeta.js';
+import Purchase from '../Purchase/Purchase.js';
 
 import './StockInfo.css';
 
@@ -16,6 +17,7 @@ export default class StockInfo extends React.Component{
           refreshed: "-",
           time_zone: "-"
         },
+      shares: 0,
       stocks: [
       {
         date: new Date(),
@@ -101,6 +103,13 @@ export default class StockInfo extends React.Component{
         }); 
 
   }
+  onSubmitHandler(event){
+    event.preventDefault();
+    console.log(event.target.value);
+    this.setState({shares: event.target.value})
+    //this.setState({shares: event.target.value});
+
+  }
 
 
   render(){
@@ -110,12 +119,28 @@ export default class StockInfo extends React.Component{
           <StockGraph data = {this.state.stocks}/>
         </div>
         <div className="all_stock__info">
-          <div className="stock__meta">
-            <StockMeta meta_info={this.state.meta_data}/>
+          <div className="meta_info">
+            <div className="stock__meta">
+              <StockMeta meta_info={this.state.meta_data}/>
+            </div>
+            <div className="stock__table2">
+              < StockTable latestStock={this.state.stocks[99] || this.state.stocks[0] }/>
+            </div>
           </div>
-          <div className="stock__table2">
-            < StockTable latestStock={this.state.stocks[99] || this.state.stocks[0] }/>
+
+          <div className = "purchase__container">
+            <div className="enter__shares">
+              <form onSubmit={this.onSubmitHandler}>
+                <input type="text" patter="[0-9]*" placeHolder="Shares" />
+              </form>
+            </div>
+
+
+            <div className="purchase">
+              <Purchase amount={this.state.shares} symbol={this.state.meta_data.symbol}/>
+            </div>
           </div>
+          
         </div>
       </div>
     );

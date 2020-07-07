@@ -1,0 +1,17 @@
+button{
+    display: block;
+    width: 90%;
+    height: 4rem;
+    background-color: white;
+    margin: 1rem auto;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+button:hover{
+    background-color: gray;
+    color: white;
+}
