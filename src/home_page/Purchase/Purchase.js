@@ -15,7 +15,6 @@ export default class Purchase extends React.Component{
 
     onSubmitHandler(event){
         event.preventDefault();
-        console.log(this.state.shares);
       }
 
       onChangeHandler(event){
@@ -24,14 +23,13 @@ export default class Purchase extends React.Component{
 
     render(){
         return (
-            <div className="purchase__container1">
+            <div className="purchase__components">
 
                 <div className="enter__shares">
                     <form onSubmit={ this.onSubmitHandler}>
                         <input type="text" pattern="[0-9]*" placeholder="Enter # of Shares" onChange={this.onChangeHandler}/>
                     </form>
                     </div>
-    
     
                 <div className="buttons">
                     <Button variant="primary" size="lg" block>
