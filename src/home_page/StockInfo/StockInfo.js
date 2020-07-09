@@ -129,13 +129,6 @@ export default class StockInfo extends React.Component{
           </div>
 
           <div className = "purchase__container">
-            <div className="enter__shares">
-              <form onSubmit={this.onSubmitHandler}>
-                <input type="text" patter="[0-9]*" placeHolder="Shares" />
-              </form>
-            </div>
-
-
             <div className="purchase">
               <Purchase amount={this.state.shares} symbol={this.state.meta_data.symbol}/>
             </div>
