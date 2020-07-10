@@ -1,21 +1,22 @@
-.auth__container{
+.sign__up{
     border: 3px solid white;
     border-radius: 10px;
     float: center;
     width: 35%;
-    height: 30rem;
+    height: 40rem;
     margin: 10rem auto;
     padding: 2rem;
     color: white;
 }
 
 
-.auth__container h2{
+.sign__up h2{
     text-align: center;
+    font-size: 2rem;
 
 }
 
-.switch a {
+.sign__up a{
     text-decoration: none;
     background-color: transparent;
     color: blue;
