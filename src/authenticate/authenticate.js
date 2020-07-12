@@ -1,8 +1,8 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import SignUp from './signup';
-import { Link, useHistory  } from 'react-router-dom';
+// import SignUp from './signup';
+import { Link } from 'react-router-dom';
 
 
 import './authenticate.css';
@@ -51,14 +51,12 @@ export default class Authenticate extends React.Component{
                     </Button>
                 </Form>
                 <div className="switch">
-                    <h3>Don't have an account?</h3><Link to='/sign_up'>Sign up here.</Link>
+                    <h3>Don't have an account?</h3><Link to='/SignUp'>Sign up here.</Link>
                 </div>
 
             </div>
         );
-        const signup= (
-            
-                <SignUp />);
+        
         return signin;
     }
 

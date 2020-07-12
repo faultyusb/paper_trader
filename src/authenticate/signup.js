@@ -2,7 +2,6 @@ import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
-import Authenticate from './authenticate';
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -67,7 +66,7 @@ class SignUp extends React.Component {
                     </Col>
                 </Form>
                 <div className="switch">
-                    <h3>Already have an account?</h3><Link to="/authenticate">Sign in here.</Link>
+                    <h3>Already have an account?</h3><Link to="/SignIn">Sign in here.</Link>
                 </div>
             </div>
          );

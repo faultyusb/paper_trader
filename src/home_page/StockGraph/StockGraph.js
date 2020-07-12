@@ -30,6 +30,8 @@ import { ema, sma } from "react-stockcharts/lib/indicator";
 import { fitWidth } from "react-stockcharts/lib/helper";
 import { last } from "react-stockcharts/lib/utils";
 
+import './StockGraph.css';
+
 class CandleStickChartWithEdge extends React.Component {
 	render() {
 		const ema20 = ema()
@@ -82,7 +84,7 @@ class CandleStickChartWithEdge extends React.Component {
 					yExtents={[d => d.volume, smaVolume70.accessor()]}
 					height={150} origin={(w, h) => [0, h - 150]}
 				>
-					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
+					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")} tickStroke="#fff"/>
 
 					<BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "#6BA583" : "#FF0000"} />
 					<AreaSeries yAccessor={smaVolume70.accessor()} stroke={smaVolume70.stroke()} fill={smaVolume70.fill()}/>
@@ -121,7 +123,7 @@ class CandleStickChartWithEdge extends React.Component {
 					<CurrentCoordinate yAccessor={ema50.accessor()} fill={ema50.stroke()} />
 
 					<EdgeIndicator itemType="last" orient="right" edgeAt="right"
-						yAccessor={ema20.accessor()} fill={ema20.fill()}/>
+						yAccessor={ema20.accessor()} fill={ema20.fill()} valueFill="#fff"/>
 					<EdgeIndicator itemType="last" orient="right" edgeAt="right"
 						yAccessor={ema50.accessor()} fill={ema50.fill()}/>
 					<EdgeIndicator itemType="last" orient="right" edgeAt="right"

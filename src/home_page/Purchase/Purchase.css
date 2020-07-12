@@ -1,35 +1,56 @@
 
-.purchase__components{
-    display: block;
-    margin-left: 2.2rem;
-    margin-top: 0rem;
-}
-button{
-    width: 90%;
-    height: 4rem;
-    background-color: white;
-    margin: 1rem auto;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition-duration: 0.3s;
+.btn{
+    margin-left: 13%;
+    margin-top: 5%;
+    padding: 3%;
+    width: 75%;
+
+
 }
 
-button:hover{
-    background-color: gray;
+#trans_buttons{
+    padding: 5%;
+    margin-top: 3%;
+    margin-left: 5%;
+    display: flex;
     color: white;
-}
-
-.enter__shares input[type="text"]{
-    margin: 1rem auto;
     width: 90%;
-    height: 4rem;
-    background-color: #fff;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
+    font-size: 125%;
+}
+#trans_buttons h3 {
+    font-size: 125%;
+    margin-top: 5%;
+} 
+
+
+
+#butts {
+    margin-left: 60%;
+    font-size: 100%;
 
 }
+.purchase{
+    color: white;
+    font-size: 100%
+}
+.purchase input{
+    width: 90%;
+    margin: auto;
+    font-size: 125%;
+}
+.purchase label{
+    font-size: 125%;
+    margin-left: 35%;
+}
+
+.select{
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+}
+.select h3 {
+    font-size: 125%;
+    text-align: center;
+}
+
 

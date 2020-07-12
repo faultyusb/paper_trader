@@ -22,11 +22,11 @@ function App() {
             <Portfolio/>
           </Route>
 
-          <Route path='/authenticate' exact>
+          <Route path='/SignIn' exact>
             <Authenticate/>
           </Route>
 
-          <Route path='/sign_up' exact>
+          <Route path='/SignUp' exact>
             <SignUp/>
           </Route>
 
@@ -34,7 +34,7 @@ function App() {
             <Error/>
           </Route>
 
-          <Redirect to="/error" />
+          <Redirect to="/home_page" />
         </Switch>
       </main>
     </HashRouter>

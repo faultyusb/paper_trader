@@ -124,7 +124,7 @@ export default class StockInfo extends React.Component{
               <StockMeta meta_info={this.state.meta_data}/>
             </div>
             <div className="stock__table2">
-              < StockTable latestStock={this.state.stocks[99] || this.state.stocks[0] }/>
+              <StockTable latestStock={this.state.stocks[99] || this.state.stocks[0] }/>
             </div>
           </div>
 

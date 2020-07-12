@@ -1,4 +1,4 @@
-.nav_bar{
+/* .nav_bar{
     display: flex;
     margin: 1rem;
     justify-content: space-between;
@@ -40,4 +40,38 @@ a:hover{
     color: grey;
     background-color:white;
 }
+ */
 
+ a {
+     text-decoration: none;
+     color: inherit;
+     padding: 0px;
+     background-color: #343A40;
+     font-size: 1.5rem;
+ }
+img:hover{
+    cursor: pointer;
+}
+
+ a:hover{
+    text-decoration: none;
+    color: inherit;
+    background-color: #343A40;
+ }
+
+ .navbar-nav{
+     background-color: #343A40;
+ }
+
+ .navbar-brand{
+     padding: 1rem;
+     background-color: #343A40;
+ }
+ #responsive-navbar-nav{
+    background-color: #343A40;
+
+ }
+
+ .nav__links a{
+     float:right;
+ }
