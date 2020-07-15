@@ -1,0 +1,16 @@
+.stock__card{
+    border: 3px solid white;
+    padding: 2rem;
+    margin: 2rem 2rem;
+    justify-content: center;
+}
+
+.stock__card ul {
+    color: white;
+    text-align: center;
+    list-style: none;
+}
+
+.stock__card li {
+    text-decoration: none;
+}
