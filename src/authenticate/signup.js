@@ -19,17 +19,19 @@ class SignUp extends React.Component {
             email: "",
             first_name: "",
             last_name: "",
-            password: ""
+            password: "",
+            password2: ""
         });
     }
 
     onSubmitHandler(event){
-        if (!this.state.email || !this.state.password || !this.state.first_name || !this.state.last_name){
+        if (!this.state.email || !this.state.password || !this.state.password2 || !this.state.first_name || !this.state.last_name){
             console.log("please enter all credentials");
         }
-        else{
-            console.log("everything is entered");
+        else if (this.state.password !== this.state.password2){
+            console.log("Passwords do not match.");
         }
+        event.preventDefault();
         console.log(this.state);
     }
 
@@ -46,6 +48,11 @@ class SignUp extends React.Component {
                     <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onChange={(event)=> this.setState({password: event.target.value})}/>
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Please Re-enter your password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" onChange={(event)=> this.setState({password2: event.target.value})}/>
                     </Form.Group>
 
                     
