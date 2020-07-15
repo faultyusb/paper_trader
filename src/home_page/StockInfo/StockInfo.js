@@ -98,6 +98,7 @@ export default class StockInfo extends React.Component{
           this.setState({stocks: joined});
         }
       })
+      .catch(err => console.log(err))
         .then(()=>{
           this.setState({stocks: this.state.stocks.reverse()});
         }); 
@@ -130,7 +131,7 @@ export default class StockInfo extends React.Component{
 
           <div className = "purchase__container">
             <div className="purchase">
-              <Purchase amount={this.state.shares} symbol={this.state.meta_data.symbol}/>
+              <Purchase amount={this.state.shares} symbol={this.state.meta_data.symbol} price={this.state.stocks[99] || this.state.stocks[0]}/>
             </div>
           </div>
           

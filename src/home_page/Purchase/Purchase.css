@@ -34,6 +34,7 @@
     font-size: 100%
 }
 .purchase input{
+    text-align: center;
     width: 90%;
     margin: auto;
     font-size: 125%;
