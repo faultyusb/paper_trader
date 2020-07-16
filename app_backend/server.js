@@ -7,10 +7,10 @@ const app = express();
 app.use(express.json());
 
 // Init MongoDB connection
-const db = require('./config/keys').MongoKey;
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(()=>console.log('MongoDO connected'))
-    .catch(err => console.log(err));
+// const db = require('./config/keys').MongoKey;
+// mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(()=>console.log('MongoDO connected'))
+//     .catch(err => console.log(err));
 
 
 app.use('/', require('./routes/users'));
