@@ -9,11 +9,11 @@ app.use(express.json());
 // Init MongoDB connection
 const db = require('./config/mongokey').MongoKey;
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(()=>console.log('MongoDO connected'))
+    .then(()=>console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-
-app.use('/', require('./routes/users'));
+// Routes
+app.use('/', require('./routes/users')); //Login/Sign Up Routes
 
 
 
