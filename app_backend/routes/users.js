@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 const Users = require('../models/Users');
@@ -42,7 +42,6 @@ router.post('/SignUp', (req, res) => {
                     res.send('Hello');
 
                     // encrypt password
-
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(newUsers.password, salt, (err, hash) => {
                             if (err) {
@@ -59,12 +58,20 @@ router.post('/SignUp', (req, res) => {
                 }
 
             })
-
     }
-    
-
 
 })
+
+// Sign In
+
+router.post('/SignIn', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/home_page',
+        failureRedirect: '/SignIn',
+        message: "Failed to sign in"
+    })(req, res, next);
+})
+
 
 
 

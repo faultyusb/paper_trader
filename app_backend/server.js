@@ -1,7 +1,24 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
 
 const app = express();
+
+// importing passport
+require('./config/passport')(passport);
+
+
+// init express-session
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Body parser
 app.use(express.json());
