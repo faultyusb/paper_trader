@@ -25,14 +25,27 @@ class SignUp extends React.Component {
     }
 
     onSubmitHandler(event){
-        if (!this.state.email || !this.state.password || !this.state.password2 || !this.state.first_name || !this.state.last_name){
-            console.log("please enter all credentials");
-        }
-        else if (this.state.password !== this.state.password2){
-            console.log("Passwords do not match.");
-        }
-        event.preventDefault();
-        console.log(this.state);
+        // if (!this.state.email || !this.state.password || !this.state.password2 || !this.state.first_name || !this.state.last_name){
+        //     console.log("please enter all credentials");
+        // }
+        // else if (this.state.password !== this.state.password2){
+        //     console.log("Passwords do not match.");
+        // }
+        // event.preventDefault();
+        // console.log(this.state);
+
+        fetch('/SignUp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then(response => response.json())
+            .then(data => console.log(data.message))
+            .catch(err => console.log(err));
+
+
     }
 
     render() { 

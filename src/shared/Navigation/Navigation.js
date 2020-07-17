@@ -49,31 +49,6 @@ function Navigation(){
     );
 
 
-
-
-    // return (
-    //     <div className="nav_bar">
-            
-    //         <img src={Logo} alt="" className = "logo" onClick={redirect}/>
-    //         <h1>Stock Simulator!</h1>
-    //         <nav>
-    //             <ul className = "nav__links">
-    //                 <li>
-    //                     <Link to='/home_page'>Home</Link>
-    //                 </li>
-
-    //                 <li>
-    //                     <Link to='/portfolio'>My Portfolios</Link>
-    //                 </li>
-
-    //                 <li>
-    //                     <Link to='/authenticate'>Login/Sign Up</Link>
-    //                 </li>
-    //             </ul>
-    //         </nav>
-    //     </div>
-    // );
-
 }
 
 export default Navigation;

@@ -25,6 +25,7 @@ module.exports = function(passport) {
                         console.log(err);
                     }
                     if (isMatch){
+                        console.log("You are logged in.")
                         return done(null, user, { message: "Password credentials match!" });
                     }
                     else{
