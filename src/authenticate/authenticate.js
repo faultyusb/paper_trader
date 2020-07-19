@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 // import SignUp from './signup';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 import './authenticate.css';
@@ -14,7 +14,7 @@ export default class Authenticate extends React.Component{
         super(props);
         // this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
-        this.state = {email: "", password: "", error: false};
+        this.state = {email: "", password: "", error: false, redirect: false};
 
     }
 
@@ -37,20 +37,35 @@ export default class Authenticate extends React.Component{
 
             console.log("Signing In...");
             console.log(data);
+            this.setState({ redirect: true });
             window.location.reload();
             }
+        })     
+    }
+
+    componentDidMount(){
+        fetch('/isLoggedIn', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
         })
-        // .catch(err => {
-        //     // window.location.reload();
-        //     console.log(err, "whats going on")
-        // });
-        
+        .then(response => response.json())
+        .then(data => {
+            if (data.first_name){
+                this.setState({ redirect: true });
+            }
+        })
+        .catch(err => console.log(err));
     }
   
 
 
     render(){
-        const signin = (
+        // cannot visit sign in page if already signed in
+        if (this.state.redirect){
+            return <Redirect to='/home_page'/>;
+        }
+        
+        return (
             <div>
                 {this.state.error ? <Alert variant='danger'>Wrong email/password</Alert> : null}
                 <div className="auth__container">
@@ -77,11 +92,7 @@ export default class Authenticate extends React.Component{
                 </div>
             </div>
         );
-        
-        return signin;
     }
-
-
 }
 
 

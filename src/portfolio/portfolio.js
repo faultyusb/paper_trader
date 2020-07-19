@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 
 import Stock from './Stock';
 
@@ -11,6 +12,7 @@ export default class portfolio extends React.Component{
         super(props);
         this.addStock = this.addStock.bind(this);
         this.state = {
+            error: false,
             stockAmount: 5,
             stocks: [
                 {
@@ -47,7 +49,11 @@ export default class portfolio extends React.Component{
             headers: {'Content-Type': 'application/json'},
         })
         .then(response => response.json())
-        .then(data=>console.log(data.errorMessage));
+        .then(data=>{
+            if (data.errorMessage){
+                this.setState({ error: true });
+            }
+            console.log(data.errorMessage)});
         // .catch(err => {
         //     console.log(err, "whats going on")});
         // }
@@ -67,6 +73,9 @@ export default class portfolio extends React.Component{
     }
 
     render(){
+        if (this.state.error){
+            return <Redirect to="/SignIn"/>
+        }
         let total_val = 0;
         for (let i = 0; i < this.state.stocks.length; i++){
             total_val += this.state.stocks[i].purchased_value;

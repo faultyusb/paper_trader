@@ -2,7 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -22,6 +22,7 @@ class SignUp extends React.Component {
             last_name: "",
             password: "",
             password2: "",
+            redirect: false,
             error: {
                 errorStatus: false,
                 errorMessage: ""
@@ -59,11 +60,27 @@ class SignUp extends React.Component {
                 }
             })
             .catch(err => console.log(err));
-
-
     }
 
-    render() { 
+    componentDidMount(){
+        fetch('/isLoggedIn', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.first_name){
+                this.setState({ redirect: true });
+            }
+        })
+        .catch(err => console.log(err));
+    }
+
+    render() {
+        // cannot visit sign up page if already logged in
+        if (this.state.redirect){
+            return <Redirect to="home_page" />;
+        } 
         return (
             <div>
                 {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}

@@ -86,7 +86,7 @@ router.get('/logout', (req, res) => {
     }
     else{
         console.log("You were never logged in the first place")
-        res.json({ message: "You were never logged in the first place" });
+        res.json({ errorMessage: "You were never logged in the first place" });
     }
     
 })

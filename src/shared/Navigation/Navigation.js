@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Navigation.css';
-import { Link, useHistory  } from 'react-router-dom';
+import { Link, Redirect  } from 'react-router-dom';
 import Logo from '../images/stock.webp';
 
 import Navbar from 'react-bootstrap/Navbar';
@@ -67,7 +67,7 @@ export default class Navigation extends React.Component{
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="justify-content-end" style={{ width: "100%" }}>
                 <Nav.Link >
-                    {this.state.error ? "My Portfolio" : <Link to="/portfolio">My Portfolios</Link>}
+                    {this.state.error ? <Link to="/SignIn">My Portfolios</Link>: <Link to="/portfolio">My Portfolios</Link>}
                     {/* <Link to="/portfolio">My Portfolios</Link> */}
                 </Nav.Link>
                 <Nav.Link >{this.state.first_name ? `Welcome ${this.state.first_name}` : <Link to="/SignIn">Login/Sign up</Link>} {'  '} </Nav.Link>
