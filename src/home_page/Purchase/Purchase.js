@@ -35,7 +35,7 @@ export default class Purchase extends React.Component{
       }
 
       render(){
-          console.log(this.state, "before")
+          //console.log(this.state, "before")
           return (
               <div className="purchase">
                   <Form onSubmit={this.onSubmitHandler}>

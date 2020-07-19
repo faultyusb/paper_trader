@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const Users = require('../models/Users');
+const { response } = require('express');
 
 
 
@@ -29,6 +30,7 @@ module.exports = function(passport) {
                         return done(null, user, { message: "Password credentials match!" });
                     }
                     else{
+                        console.log("Incorrect password.")
                         return done(null, false, { message: "Password does not match" });
                     }
                 })
