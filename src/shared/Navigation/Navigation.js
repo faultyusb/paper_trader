@@ -7,13 +7,12 @@ import Logo from '../images/stock.webp';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.css';
-import LogOut from './LogOut';
 
 
 export default class Navigation extends React.Component{
     constructor(props){
         super(props);
-        this.state = {first_name: ""};
+        this.state = {first_name: "", error: true};
     }
 
     componentDidUpdate(prevState){
@@ -26,12 +25,11 @@ export default class Navigation extends React.Component{
         fetch('/isLoggedIn', {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
-            // body: JSON.stringify(this.state)
         })
         .then(response => response.json())
         .then(data => {
             if (data.first_name){
-                this.setState({ first_name: data.first_name });
+                this.setState({ error: false, first_name: data.first_name });
             }
         })
         .catch(err => console.log(err));
@@ -44,21 +42,13 @@ export default class Navigation extends React.Component{
             // body: JSON.stringify(this.state)
         })
         .then(response => response.json())
-        .then(data => console.log("signing out"))
+        .then(data => {console.log("signing out")})
         .catch(err => console.log(err));
         window.location.reload();
     }
 
 
     render(){
-    // let history = useHistory();
-    // let redirect = () => {
-    //     history.push("/home_page");
-    // }
-
-
-
-
 
     return (
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -69,7 +59,6 @@ export default class Navigation extends React.Component{
                     width="90"
                     height="90"
                     className="d-inline-block align-top"
-                    // onClick = {redirect}
                 />{' '}
                 </Navbar.Brand>
                 <Navbar.Brand><Link to="/home_page">Paper Trader</Link></Navbar.Brand>
@@ -78,13 +67,11 @@ export default class Navigation extends React.Component{
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="justify-content-end" style={{ width: "100%" }}>
                 <Nav.Link >
-                    <Link to="/portfolio">My Portfolios</Link>
+                    {this.state.error ? "My Portfolio" : <Link to="/portfolio">My Portfolios</Link>}
+                    {/* <Link to="/portfolio">My Portfolios</Link> */}
                 </Nav.Link>
-                <Nav.Link >{this.state.first_name ? `Welcome ${this.state.first_name}` : <Link to="/SignIn">Login/Sign up</Link>} {'  '}
+                <Nav.Link >{this.state.first_name ? `Welcome ${this.state.first_name}` : <Link to="/SignIn">Login/Sign up</Link>} {'  '} </Nav.Link>
                 
-                    {/* <Link to="/SignIn">Login/Sign up</Link> */}
-                </Nav.Link>
-
                 <Nav.Link onClick={this.logout}>
                     {this.state.first_name ? "Logout" : null}
                 </Nav.Link>
