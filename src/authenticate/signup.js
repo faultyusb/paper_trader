@@ -38,7 +38,7 @@ class SignUp extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        })
+            })
             .then(response => response.json())
             .then(data => {
                 if (data.errorMessage){

@@ -21,7 +21,16 @@ const UsersSchema = new mongoose.Schema(
         date: {
             type: Date,
             default: Date.now
-        }
+        },
+        stocks: [
+            {
+                symbol: String,
+                price: Number,
+                shares: Number,
+                volume: Number,
+                date: {type: Date, default: Date.now}
+            }
+        ]
     }
 );
 
