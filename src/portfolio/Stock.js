@@ -2,6 +2,17 @@ import React from 'react';
 
 import './Stock.css';
 function Stock(props){
+
+    if (props.missing){
+        return (
+            <div className="stock__card">
+                <ul>
+                    <li>You have no stocks in your portfolio. Go to the main page to buy stocks.</li>
+                </ul>
+            </div>
+        );
+    }
+
     return (
         <div className="stock__card">
             <ul>

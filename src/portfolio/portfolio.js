@@ -36,6 +36,10 @@ export default class portfolio extends React.Component{
         if (this.state.error){
             return <Redirect to="/SignIn"/>
         }
+        if (this.state.stocks.length === 0){
+            return <Stock missing={true} />;
+        }
+        
         let total_val = 0;
         const stock_array = this.state.stocks;
         for (let i = 0; i < stock_array.length; i++){
