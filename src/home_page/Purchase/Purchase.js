@@ -27,15 +27,43 @@ export default class Purchase extends React.Component{
             error: {
                 errorStatus: false,
                 errorMessage: ""
-            }
+            },
+            total_shares: 0
         };
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.price.close !== this.state.price){
             this.setState({ price: this.props.price.close, volume: this.props.price.volume, symbol: this.props.symbol});
+            fetch('/ownedShares', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.state)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ total_shares: data.total_shares });
+                })
+                .catch(err => console.log(err));
         }
     }
+
+    // componentDidMount(){
+    //     fetch('/ownedShares', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             this.setState({ total_shares: data.total_shares });
+    //         })
+    //         .catch(err => console.log(err));
+
+    // }
 
     onSubmitHandler(event){
         event.preventDefault();
@@ -51,6 +79,9 @@ export default class Purchase extends React.Component{
             .then(data => {
                 if (data.errorMessage){
                     this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage} });
+                }
+                else{
+                    this.setState({ total_shares: data.total_shares });
                 }
             })
             .catch(err => console.log(err));
@@ -111,6 +142,9 @@ export default class Purchase extends React.Component{
                 </div> */}
                 <Form.Label>Total Value (US $)</Form.Label>
                 <Form.Control type="number" placeholder={this.state.price * this.state.shares} readOnly />
+
+                <Form.Label>Shares Owned</Form.Label>
+                <Form.Control type="number" placeholder={this.state.total_shares} readOnly />
 
                 <div className="sub_btn">
                     <Button type="submit" variant="outline-secondary">Submit Transaction</Button>{' '}
