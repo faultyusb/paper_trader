@@ -6,7 +6,12 @@ const Users = require('../models/Users');
 
 
 
-router.get('/portfolios', ensureAuthenticated, (req, res) => {});
+router.get('/portfolios', ensureAuthenticated, (req, res) => {
+    Users.findById(req.user._id)
+        .then(user => {
+            return res.json({ stocks: user.stocks });
+        });
+});
 
 router.put('/stocktrans', (req, res) => {
     if (!req.user){
@@ -47,5 +52,23 @@ router.put('/stocktrans', (req, res) => {
     }
 
 });
+
+
+router.post('/ownedShares', (req, res) => {
+    if (!req.user){
+        return res.json({ total_shares: 0 });
+    }
+
+    Users.findOne({ _id: req.user._id})
+        .then(user => {
+            const total_stocks = user.stocks.filter(obj => obj.symbol===req.body.symbol);
+            let total_shares = 0;
+            total_stocks.forEach(stock => {
+                total_shares += stock.shares
+            });
+            return res.json({ total_shares: total_shares });
+        });
+
+})
 
 module.exports = router;
