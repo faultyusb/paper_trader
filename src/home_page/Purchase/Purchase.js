@@ -50,24 +50,8 @@ export default class Purchase extends React.Component{
         }
     }
 
-    // componentDidMount(){
-    //     fetch('/ownedShares', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             this.setState({ total_shares: data.total_shares });
-    //         })
-    //         .catch(err => console.log(err));
-
-    // }
-
+ 
     onSubmitHandler(event){
-        event.preventDefault();
-        //console.log(this.state);
         fetch('/stocktrans', {
             method: 'PUT',
             headers: {
@@ -81,6 +65,7 @@ export default class Purchase extends React.Component{
                     this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage} });
                 }
                 else{
+                    console.log(data.total_shares)
                     this.setState({ total_shares: data.total_shares });
                 }
             })
@@ -98,7 +83,7 @@ export default class Purchase extends React.Component{
 
 
       render(){
-          console.log(this.state)
+         //console.log(this.state)
           return (
               <div className="purchase">
                   {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
@@ -130,16 +115,7 @@ export default class Purchase extends React.Component{
                     <Form.Label>Enter Quantity</Form.Label>
                     <Form.Control pattern="^-?[0-9]\d*\.?\d*$" type="text" value={this.state.shares} onChange={e=>this.setState({shares: e.target.value})} placeholder="Enter quantity of stocks"/>
                 </Form>
-                {/* <div className="select">
-                    <h3>{!this.state.buy ? "Add stocks to" : "Sell from"}</h3>
-                        <Form.Group>
-                            <Form.Control as="select">
-                                <option>portf1</option>
-                                <option>portf2</option>
-                                <option>portf3</option>
-                            </Form.Control>
-                        </Form.Group>
-                </div> */}
+                
                 <Form.Label>Total Value (US $)</Form.Label>
                 <Form.Control type="number" placeholder={this.state.price * this.state.shares} readOnly />
 
