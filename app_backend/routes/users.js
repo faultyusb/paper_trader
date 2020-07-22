@@ -63,9 +63,15 @@ router.post('/SignUp', (req, res) => {
 // Sign In
 
 router.post('/SignIn', function(req, res, next) {
+    // check if any fields are empty; return an error message
+    const {email, password} = req.body;
+    if (!email || !password){
+        return res.json({ errorMessage: "You must enter an email and password." });
+    }
+
     passport.authenticate('local', function(err, user, info) {
       if (err) { return next(err); }
-      if (!user) { return res.json({ errorMessage: "wrong email/pass boi" }); }
+      if (!user) { return res.json({ errorMessage: "Wrong username and/or password." }); }
       req.logIn(user, function(err) {
         if (err) { return next(err); }        
         res.json({ message: "111 everything works" });
