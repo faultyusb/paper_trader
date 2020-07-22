@@ -14,7 +14,15 @@ export default class Authenticate extends React.Component{
         super(props);
         // this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
-        this.state = {email: "", password: "", error: false, redirect: false};
+        this.state = {
+            email: "",
+            password: "", 
+            redirect: false, 
+            error: {
+                errorStatus: false,
+                errorMessage: ""
+            }
+        };
 
     }
 
@@ -30,15 +38,11 @@ export default class Authenticate extends React.Component{
         .then(response => response.json())
         .then(data => {
             if (data.errorMessage){
-                console.log("wrong pass/email");
-                this.setState({ error: true })
+                this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage}})
             }
             else{
-
-            console.log("Signing In...");
-            console.log(data);
-            this.setState({ redirect: true });
-            window.location.reload();
+                this.setState({ redirect: true });
+                window.location.reload();
             }
         })     
     }
@@ -67,7 +71,7 @@ export default class Authenticate extends React.Component{
         
         return (
             <div>
-                {this.state.error ? <Alert variant='danger'>Wrong email/password</Alert> : null}
+                {this.state.error.errorStatus ? <Alert variant='danger'>{this.state.error.errorMessage}</Alert> : null}
                 <div className="auth__container">
                     <h2>Sign in!</h2>
                     <Form onSubmit = {this.onSubmitHandler}>
