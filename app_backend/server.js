@@ -31,6 +31,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Routes
 app.use('/', require('./routes/users')); //Login/Sign Up Routes
+app.use('/', require('./routes/portfolio')); // Portfolio Routes
 
 
 
