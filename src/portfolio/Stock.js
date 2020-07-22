@@ -7,9 +7,9 @@ function Stock(props){
             <ul>
                 <li>Stock Symbol: {props.symbol}</li>
                 <li>Close: $ {props.price}</li>
-                <li>Number of Shares: {props.quantity}</li>
+                <li>Number of Shares: {props.shares}</li>
                 <li>Total Volume: {props.volume}</li>
-                <li>Value: $ {props.purchased}</li>
+                <li>Invested: $ {props.init_investment}</li>
                 {/* <li>{props.date}</li> */}
         </ul>
 
