@@ -11,14 +11,19 @@ export default class Purchase extends React.Component{
     constructor(props){
         super(props);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
-        this.onChangeHandler = this.onChangeHandler.bind(this);
+
+        this.onSellHandler = this.onSellHandler.bind(this);
+        this.onBuyHandler = this.onBuyHandler.bind(this);
+
+
+
         this.state = {
             symbol: this.props.symbol,
             volume: this.props.price.volume,
             shares: 0,
             price: this.props.price.close,
-            buy: false,
-            sell: true,
+            buy: '',
+            sell: '',
             error: {
                 errorStatus: false,
                 errorMessage: ""
@@ -34,7 +39,7 @@ export default class Purchase extends React.Component{
 
     onSubmitHandler(event){
         event.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
         fetch('/stocktrans', {
             method: 'PUT',
             headers: {
@@ -51,21 +56,25 @@ export default class Purchase extends React.Component{
             .catch(err => console.log(err));
     }
 
-    onChangeHandler(event){
-    this.setState({ buy: this.state.sell, sell: this.state.buy  });
-    console.log(this.state);
-
+    onSellHandler(){
+        this.setState({ sell: true, buy: false });
     }
 
+    onBuyHandler(){
+        this.setState({ buy: true, sell: false });
+    }
+
+
+
       render(){
-          //console.log(this.state, "before")
+          console.log(this.state)
           return (
               <div className="purchase">
                   {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
                   <Form onSubmit={this.onSubmitHandler}>
                 <div className = "inner"id="trans_buttons">
                     <h3>Select an action: </h3>
-                    <Form onChange={this.onChangeHandler} >
+                    <Form className="yeet">
                         <div className = "inner" id="butts">
                             <Form.Check 
                                 custom
@@ -73,7 +82,7 @@ export default class Purchase extends React.Component{
                                 id="buy"
                                 label="Buy"
                                 name="trans"
-                                // checked={true}
+                                onChange = {this.onBuyHandler}
                             />
                             <Form.Check 
                                 custom
@@ -81,6 +90,7 @@ export default class Purchase extends React.Component{
                                 id="sell"
                                 name="trans"
                                 label="Sell"
+                                onChange = {this.onSellHandler}
                             />
                         </div>
                     </Form>
