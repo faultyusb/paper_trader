@@ -39,6 +39,7 @@ router.put('/stocktrans', (req, res) => {
                         console.log("Error in buying stocks.");
                     }
                 });
+                return res.json({ successMessage: `Successfully bought ${req.body.shares} ${req.body.shares>1 ? "shares": "share"} of ${req.body.symbol}!` });
 
             });
     }
@@ -63,7 +64,8 @@ router.put('/stocktrans', (req, res) => {
                 if (err){
                     console.log("Something wrong with selling stocks.");
                 }
-        });
+            });
+            return res.json({ successMessage: `Successfully sold ${req.body.shares} ${req.body.shares > 1 ? "shares": "share"} of ${req.body.symbol}!`});
         });
     }
 
