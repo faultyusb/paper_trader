@@ -66,11 +66,15 @@ export default class Purchase extends React.Component{
                 }
             })
             .catch(err => console.log(err));
-            if (this.state.buy)
-                this.setState({ total_shares: parseInt(this.state.total_shares) + parseInt(this.state.shares) });
-            else
-                this.setState({ total_shares: parseInt(this.state.total_shares) - parseInt(this.state.shares) });
-
+            if (this.state.buy){
+                const tot_shares = parseInt(this.state.total_shares) + parseInt(this.state.shares);
+                this.setState({ total_shares: tot_shares });
+            }
+            else{ 
+                let tot_shares = parseInt(this.state.total_shares) - parseInt(this.state.shares);
+                tot_shares = (tot_shares >= 0 ? tot_shares: this.state.total_shares);
+                this.setState({ total_shares: tot_shares });
+            }
     }
 
     onSellHandler(){
