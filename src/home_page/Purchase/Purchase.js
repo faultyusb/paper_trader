@@ -28,6 +28,10 @@ export default class Purchase extends React.Component{
                 errorStatus: false,
                 errorMessage: ""
             },
+            success: {
+                successStatus: false,
+                successMessage: ""
+            },
             total_shares: 0
         };
     }
@@ -64,8 +68,12 @@ export default class Purchase extends React.Component{
                 if (data.errorMessage){
                     this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage} });
                 }
+                else if (data.successMessage){
+                    this.setState({ success: {successStatus: true, successMessage: data.successMessage} });
+                }
             })
             .catch(err => console.log(err));
+
             if (this.state.buy){
                 const tot_shares = parseInt(this.state.total_shares) + parseInt(this.state.shares);
                 this.setState({ total_shares: tot_shares });
@@ -75,6 +83,7 @@ export default class Purchase extends React.Component{
                 tot_shares = (tot_shares >= 0 ? tot_shares: this.state.total_shares);
                 this.setState({ total_shares: tot_shares });
             }
+            this.setState({ shares: 0 });
     }
 
     onSellHandler(){
@@ -92,6 +101,7 @@ export default class Purchase extends React.Component{
           return (
               <div className="purchase">
                   {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
+                  {this.state.success.successStatus ? <Alert variant="primary"> {this.state.success.successMessage} </Alert> : null}
                   <Form onSubmit={this.onSubmitHandler}>
                 <div className = "inner"id="trans_buttons">
                     <h3>Select an action: </h3>
