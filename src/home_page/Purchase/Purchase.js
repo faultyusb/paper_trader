@@ -64,12 +64,13 @@ export default class Purchase extends React.Component{
                 if (data.errorMessage){
                     this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage} });
                 }
-                else{
-                    console.log(data.total_shares)
-                    this.setState({ total_shares: data.total_shares });
-                }
             })
             .catch(err => console.log(err));
+            if (this.state.buy)
+                this.setState({ total_shares: parseInt(this.state.total_shares) + parseInt(this.state.shares) });
+            else
+                this.setState({ total_shares: parseInt(this.state.total_shares) - parseInt(this.state.shares) });
+
     }
 
     onSellHandler(){
