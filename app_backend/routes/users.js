@@ -73,7 +73,8 @@ router.post('/SignIn', function(req, res, next) {
       if (err) { return next(err); }
       if (!user) { return res.json({ errorMessage: "Wrong username and/or password." }); }
       req.logIn(user, function(err) {
-        if (err) { return next(err); }        
+        if (err) { return next(err); }
+        res.json({ message: "Everything works." });        
       });
     })(req, res, next);
   });
