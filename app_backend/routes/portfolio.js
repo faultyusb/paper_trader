@@ -60,7 +60,7 @@ router.put('/stocktrans', (req, res) => {
             }
             
             console.log("Selling stock!");
-            Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": req.body.symbol}, {$set: {"stocks.$.shares": req.body.shares}}, {useFindAndModify: false}, (err, res)=>{
+            Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": req.body.symbol}, {$set: {"stocks.$.shares": total_shares - req.body.shares}}, {useFindAndModify: false}, (err, res)=>{
                 if (err){
                     console.log("Something wrong with selling stocks.");
                 }
