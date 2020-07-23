@@ -21,6 +21,7 @@ function Stock(props){
                 <li>Number of Shares: {props.shares}</li>
                 <li>Total Volume: {props.volume}</li>
                 <li>Invested: $ {props.init_investment}</li>
+                <li>Current Value of Stock: $ {props.curr_value}</li>
                 {/* <li>{props.date}</li> */}
         </ul>
 

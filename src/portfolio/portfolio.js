@@ -16,7 +16,7 @@ export default class portfolio extends React.Component{
     }
 
     componentDidMount(){
-        fetch('/portfolios', {
+        fetch('/updateStocks', {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         })
@@ -29,6 +29,7 @@ export default class portfolio extends React.Component{
                         this.setState({ stocks: data.stocks });
                     }
                     });
+
     }
 
 
@@ -58,6 +59,7 @@ export default class portfolio extends React.Component{
                                     volume={stock.volume}
                                     shares={stock.shares}
                                     init_investment = {stock.shares * stock.price}
+                                    curr_value = {stock.shares * stock.asset_value}
                                     // date={stock.date}
                                 />
                     }
