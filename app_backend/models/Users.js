@@ -28,6 +28,7 @@ const UsersSchema = new mongoose.Schema(
                 price: Number,
                 shares: Number,
                 volume: Number,
+                asset_value: Number,
                 date: {type: Date, default: Date.now}
             }
         ]

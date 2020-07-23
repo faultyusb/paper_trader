@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
+const fetch = require('node-fetch');
 
 const Users = require('../models/Users');
 
 
 
-router.get('/portfolios', ensureAuthenticated, (req, res) => {
-    Users.findById(req.user._id)
-        .then(user => {
-            return res.json({ stocks: user.stocks });
-        });
-});
+// router.get('/portfolios', ensureAuthenticated, (req, res) => {
+//     Users.findById(req.user._id)
+//         .then(user => {
+//             return res.json({ stocks: user.stocks });
+//     });
+// });
 
 router.put('/stocktrans', (req, res) => {
     if (!req.user){
@@ -31,7 +32,8 @@ router.put('/stocktrans', (req, res) => {
             symbol: req.body.symbol,
             price: req.body.price,
             shares: req.body.shares,
-            volume: req.body.volume
+            volume: req.body.volume,
+            asset_value: req.body.price
         };
         console.log("Buying stocks!")
         Users.findOneAndUpdate({ _id: req.user._id }, { $push: {stocks: stock} }, {useFindAndModify: false}, (err, result) => {
@@ -70,5 +72,43 @@ router.post('/ownedShares', (req, res) => {
         });
 
 })
+
+
+// First updates the price of each stock in the portfolio. Then, sends the updated portfolio from the db
+// to the front-end
+router.get('/updateStocks', ensureAuthenticated, (req, res) => {
+   
+    Users.findOne({ _id: req.user._id })
+        .then(user => {
+            user.stocks.forEach( stock => {
+                const SYMBOL = stock.symbol;
+                const API_KEY = 'TNPG40VN9O3OQ4PW';
+                const FUNCTION_TYPE = 'Time Series (Daily)';
+                const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${SYMBOL}&outputsize='compact'&apikey=${API_KEY}`;
+                fetch(API)
+                    .then(response => response.json())
+                        .then(data => {
+                            for (var key in data['Time Series (Daily)']){
+                                const new_price = parseInt(data[FUNCTION_TYPE][key]['4. close']);
+                                Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": stock.symbol}, {$set: {"stocks.$.asset_value": new_price}}, {useFindAndModify: false}, (err, res)=>{
+                                    if (err){
+                                        console.log("Something wrong with selling stocks.");
+                                    }
+                                });
+                                break;
+                            }
+                        })
+            });
+
+        })
+            .then(() => {
+                Users.findById(req.user._id)
+                    .then(user => {
+                        return res.json({ stocks: user.stocks });
+                    });
+            });
+});
+
+
 
 module.exports = router;
