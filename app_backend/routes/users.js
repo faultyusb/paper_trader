@@ -8,7 +8,7 @@ const Users = require('../models/Users');
 
 // Registration
 
-router.post('/SignUp', (req, res) => {
+router.post('/SignUp', (req, res, next) => {
     const { email, password, password2, first_name, last_name } = req.body;
     // check all inputs are filled
     if (!email || !password || !password2 || !first_name || !last_name){

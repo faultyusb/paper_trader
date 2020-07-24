@@ -25,7 +25,12 @@ router.put('/stocktrans', (req, res) => {
                 if (user.stocks.length === 5){
                     return res.json({ errorMessage: "You cannot purchase more than 5 stocks." });
                 }
-
+                
+                const exists = (user.stocks.filter( obj => obj.symbol == req.body.symbol));
+                if (exists.length !== 0){
+                    return res.json( {errorMessage: "Cannot purchase this stock more than once."} );
+                }
+      
                 const stock = {
                     symbol: req.body.symbol,
                     price: req.body.price,
@@ -34,6 +39,7 @@ router.put('/stocktrans', (req, res) => {
                     asset_value: req.body.price
                 };
                 console.log("Buying stocks!")
+
                 Users.findOneAndUpdate({ _id: req.user._id }, { $push: {stocks: stock} }, {useFindAndModify: false}, (err, result) => {
                     if (err){
                         console.log("Error in buying stocks.");
@@ -60,11 +66,20 @@ router.put('/stocktrans', (req, res) => {
             }
             
             console.log("Selling stock!");
-            Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": req.body.symbol}, {$set: {"stocks.$.shares": total_shares - req.body.shares}}, {useFindAndModify: false}, (err, res)=>{
-                if (err){
-                    console.log("Something wrong with selling stocks.");
-                }
-            });
+            if (req.body.shares == total_shares){
+                Users.update({ _id: req.user._id }, { "$pull": { "stocks": { "symbol": req.body.symbol } }}, { safe: true, multi:true }, function(err, obj) {
+                    console.log("Stock deleted from DB");
+                });
+            }
+
+            else{
+                Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": req.body.symbol}, {$set: {"stocks.$.shares": total_shares - req.body.shares}}, {useFindAndModify: false}, (err, res)=>{
+                    if (err){
+                        console.log("Something wrong with selling stocks.");
+                    }
+                });
+            }
+
             return res.json({ successMessage: `Successfully sold ${req.body.shares} ${req.body.shares > 1 ? "shares": "share"} of ${req.body.symbol}!`});
         });
     }
@@ -106,6 +121,7 @@ router.get('/updateStocks', ensureAuthenticated, (req, res) => {
                         .then(data => {
                             for (var key in data['Time Series (Daily)']){
                                 const new_price = parseInt(data[FUNCTION_TYPE][key]['4. close']);
+                                console.log(new_price);
                                 Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": stock.symbol}, {$set: {"stocks.$.asset_value": new_price}}, {useFindAndModify: false}, (err, res)=>{
                                     if (err){
                                         console.log("Something wrong with selling stocks.");
