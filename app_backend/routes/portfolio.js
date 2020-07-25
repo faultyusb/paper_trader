@@ -30,7 +30,6 @@ router.put('/stocktrans', (req, res) => {
                 if (exists.length !== 0){
                     return res.json( {errorMessage: "Cannot purchase this stock more than once."} );
                 }
-      
                 const stock = {
                     symbol: req.body.symbol,
                     price: req.body.price,
@@ -46,7 +45,6 @@ router.put('/stocktrans', (req, res) => {
                     }
                 });
                 return res.json({ successMessage: `Successfully bought ${req.body.shares} ${req.body.shares>1 ? "shares": "share"} of ${req.body.symbol}!` });
-
             });
     }
 
