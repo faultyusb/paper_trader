@@ -54,6 +54,7 @@ export default class Authenticate extends React.Component{
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (data.first_name){
                 this.setState({ redirect: true });
             }
@@ -61,8 +62,6 @@ export default class Authenticate extends React.Component{
         .catch(err => console.log(err));
     }
   
-
-
     render(){
         // cannot visit sign in page if already signed in
         if (this.state.redirect){
