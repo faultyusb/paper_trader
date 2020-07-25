@@ -26,12 +26,16 @@ class SignUp extends React.Component {
             error: {
                 errorStatus: false,
                 errorMessage: ""
+            },
+            success: {
+                successStatus: false,
+                successMessage: ''
             }
         });
     }
 
     onSubmitHandler(event){
-
+        event.preventDefault();
         fetch('/SignUp', {
             method: 'POST',
             headers: {
@@ -42,6 +46,7 @@ class SignUp extends React.Component {
             .then(response => response.json())
             .then(data => {
                 if (data.errorMessage){
+                    console.log("yeet");
                     this.setState({ error: {
                         errorStatus: true,
                         errorMessage: data.errorMessage
@@ -52,14 +57,14 @@ class SignUp extends React.Component {
                 else{
                     console.log("Account created!")
                     this.setState({
-                        error: {
-                            errorStatus: false,
-                            errorMessage: ""
+                        successMessage: {
+                            successStatus: true,
+                            successMessage: data.successMessage
                         }
                     });
                 }
             })
-            .catch(err => console.log(err));
+             .catch(err => console.log(err));
     }
 
     componentDidMount(){
@@ -75,15 +80,17 @@ class SignUp extends React.Component {
         })
         .catch(err => console.log(err));
     }
+    
 
     render() {
         // cannot visit sign up page if already logged in
         if (this.state.redirect){
-            return <Redirect to="home_page" />;
+            return <Redirect to="/SignIn" />;
         } 
         return (
             <div>
                 {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
+                {this.state.success.successStatus ? <Alert variant="primary"> {this.state.success.successMessage} </Alert> : null}
                 <div className="sign__up">
                     <h2>Sign up! It's easy and free.</h2>
                     <Form onSubmit = {this.onSubmitHandler}>
