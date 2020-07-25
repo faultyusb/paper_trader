@@ -88,11 +88,11 @@ export default class StockInfo extends React.Component{
         for (var key in data['Time Series (Daily)']){
           let temp = {};
           temp['date'] = new Date(key);
-          temp['open'] = parseInt(data[FUNCTION_TYPE][key]['1. open']);
-          temp['high'] = parseInt(data[FUNCTION_TYPE][key]['2. high']);
-          temp['low'] = parseInt(data[FUNCTION_TYPE][key]['3. low']);
-          temp['close'] = parseInt(data[FUNCTION_TYPE][key]['4. close']);
-          temp['volume'] = parseInt(data[FUNCTION_TYPE][key]['5. volume']);
+          temp['open'] = (data[FUNCTION_TYPE][key]['1. open']);
+          temp['high'] = (data[FUNCTION_TYPE][key]['2. high']);
+          temp['low'] = (data[FUNCTION_TYPE][key]['3. low']);
+          temp['close'] = (data[FUNCTION_TYPE][key]['4. close']);
+          temp['volume'] = (data[FUNCTION_TYPE][key]['5. volume']);
 
           let joined = this.state.stocks.concat(temp);
           this.setState({stocks: joined});
@@ -108,10 +108,7 @@ export default class StockInfo extends React.Component{
     event.preventDefault();
     console.log(event.target.value);
     this.setState({shares: event.target.value})
-    //this.setState({shares: event.target.value});
-
   }
-
 
   render(){
     return (
