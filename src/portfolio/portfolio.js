@@ -41,15 +41,19 @@ export default class portfolio extends React.Component{
             return <Stock missing={true} />;
         }
         
-        let total_val = 0;
+        let total_investment = 0;
+        let current_value = 0;
         const stock_array = this.state.stocks;
         for (let i = 0; i < stock_array.length; i++){
-            total_val += stock_array[i].price * stock_array[i].shares;
+            total_investment += stock_array[i].price * stock_array[i].shares;
+            current_value += stock_array[i].asset_value * stock_array[i].shares;
         }
 
         return (
             <div className="portfolio__">
-                <h1>Total Value of Assets: $ {total_val}.00</h1>
+                <h1>Initial Investment: $ {total_investment}</h1>
+                <h1>Current Value of Assets: $ {current_value}</h1>
+                <h1>Net Profit: $ {total_investment - current_value }</h1>
 
                 {this.state.stocks.map(
                     stock => {
