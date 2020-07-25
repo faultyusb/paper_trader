@@ -53,12 +53,14 @@ router.post('/SignUp', (req, res, next) => {
                             }
                         });
                     })
+                    
                 }
-               
+                return res.json({ successMessage: "Account successfully created! Go the sign-in page to login!" });
             })
     }
 
 })
+
 
 // Sign In
 
