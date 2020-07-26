@@ -9,8 +9,13 @@ import './StockInfo.css';
 export default class StockInfo extends React.Component{
   constructor(props){
     super(props);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+
     this.state = 
-      {meta_data: 
+      {
+        width: 0,
+        height: 0,
+        meta_data: 
         {
           stock_info: "-",
           symbol: "-",
@@ -39,7 +44,17 @@ export default class StockInfo extends React.Component{
   }
 
   componentDidMount(){
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
     this.fetchStocks();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   componentDidUpdate(prevProps){
@@ -114,9 +129,9 @@ export default class StockInfo extends React.Component{
     return (
       <div className="stock__elements">
         <div className="stock__graph">
-          <StockGraph data = {this.state.stocks}/>
+          <StockGraph width = {this.state.width} data = {this.state.stocks}/>
         </div>
-        
+
         <div className="all_stock__info">
           <div className="meta_info">
             <div className="stock__meta">

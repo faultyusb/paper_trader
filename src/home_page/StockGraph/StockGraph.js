@@ -70,7 +70,7 @@ class CandleStickChartWithEdge extends React.Component {
 		return (
 			<ChartCanvas height={600}
 				ratio={ratio}
-				width={1000}
+				width={this.props.width - 200}//1800
 				margin={{ left: 90, right: 90, top: 130, bottom: 50 }}
 				type={type}
 				seriesName="MSFT"
