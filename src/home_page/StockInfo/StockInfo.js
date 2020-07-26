@@ -116,6 +116,7 @@ export default class StockInfo extends React.Component{
         <div className="stock__graph">
           <StockGraph data = {this.state.stocks}/>
         </div>
+        
         <div className="all_stock__info">
           <div className="meta_info">
             <div className="stock__meta">

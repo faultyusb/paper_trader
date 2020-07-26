@@ -68,7 +68,7 @@ class CandleStickChartWithEdge extends React.Component {
 		const xExtents = [start, end];
 
 		return (
-			<ChartCanvas height={700}
+			<ChartCanvas height={600}
 				ratio={ratio}
 				width={1000}
 				margin={{ left: 90, right: 90, top: 130, bottom: 50 }}

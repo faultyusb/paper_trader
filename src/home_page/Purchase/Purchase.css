@@ -1,11 +1,9 @@
 
 .btn{
-    margin-left: 13%;
+    margin-left: 25%;
     margin-top: 5%;
     padding: 3%;
-    width: 75%;
-
-
+    width: 50%;
 }
 
 #trans_buttons{
@@ -25,7 +23,7 @@
 
 
 #butts {
-    margin-left: 60%;
+    margin-left: 1rem;
     font-size: 100%;
 
 }
@@ -35,7 +33,7 @@
 }
 .purchase input{
     text-align: center;
-    width: 90%;
+    width: 50%;
     margin: auto;
     font-size: 125%;
 }
@@ -45,7 +43,7 @@
 }
 
 .select{
-    width: 90%;
+    width: 50%;
     margin: auto;
     margin-top: 5%;
 }
