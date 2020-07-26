@@ -3,6 +3,9 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+
 import './Purchase.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -87,6 +90,7 @@ export default class Purchase extends React.Component{
     }
 
     onSellHandler(){
+        console.log("we selling?");
         this.setState({ sell: true, buy: false });
     }
 
@@ -97,49 +101,76 @@ export default class Purchase extends React.Component{
 
 
       render(){
-         //console.log(this.state)
           return (
               <div className="purchase">
-                  {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
-                  {this.state.success.successStatus ? <Alert variant="primary"> {this.state.success.successMessage} </Alert> : null}
-                  <Form onSubmit={this.onSubmitHandler}>
-                <div className = "inner"id="trans_buttons">
-                    <h3>Select an action: </h3>
-                    <Form className="yeet">
-                        <div className = "inner" id="butts">
-                            <Form.Check 
-                                custom
-                                type="radio"
-                                id="buy"
-                                label="Buy"
-                                name="trans"
+                <div className="alerts">
+                    {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
+                    {this.state.success.successStatus ? <Alert variant="primary"> {this.state.success.successMessage} </Alert> : null}
+                </div>
+                <Form onSubmit={this.onSubmitHandler}>
+                    <div className = "inner"id="trans_buttons">
+                        <h3>Select an action</h3>
+
+                        <ButtonGroup toggle className="radio_btn">
+                            <ToggleButton
+                                type="checkbox"
+                                variant="primary"
+                                checked={this.state.buy}
+                                value="1"
                                 onChange = {this.onBuyHandler}
-                            />
-                            <Form.Check 
-                                custom
-                                type="radio"
-                                id="sell"
-                                name="trans"
-                                label="Sell"
-                                onChange = {this.onSellHandler}
-                            />
-                        </div>
+                            >
+                                Buy
+                            </ToggleButton>
+
+                            <ToggleButton
+                            type="checkbox"
+                            variant="primary"
+                            checked={this.state.sell}
+                            value="1"
+                            onChange = {this.onSellHandler}
+                            >
+                                Sell
+                            </ToggleButton>
+
+                        </ButtonGroup>
+
+
+
+                        {/* <Form className="yeet">
+                            <div className = "radio_btn">
+                                <Form.Check 
+                                    custom
+                                    type="radio"
+                                    id="buy"
+                                    label="Buy"
+                                    name="trans"
+                                    onChange = {this.onBuyHandler}
+                                />
+                                <Form.Check 
+                                    custom
+                                    type="radio"
+                                    id="sell"
+                                    name="trans"
+                                    label="Sell"
+                                    onChange = {this.onSellHandler}
+                                />
+                            </div>
+                        </Form> */}
+                    </div>
+                    <Form onChange={event=>(this.state.volume >= event.target.value) ? this.setState({shares: event.target.value}): this.setState({ shares: 0 })}>
+                        <Form.Label>Enter Quantity</Form.Label>
+                        <Form.Control pattern="^-?[0-9]\d*\.?\d*$" type="text" value={this.state.shares} onChange={e=>this.setState({shares: e.target.value})} placeholder="Enter quantity of stocks"/>
                     </Form>
-                </div>
-                <Form onChange={event=>(this.state.volume >= event.target.value) ? this.setState({shares: event.target.value}): this.setState({ shares: 0 })}>
-                    <Form.Label>Enter Quantity</Form.Label>
-                    <Form.Control pattern="^-?[0-9]\d*\.?\d*$" type="text" value={this.state.shares} onChange={e=>this.setState({shares: e.target.value})} placeholder="Enter quantity of stocks"/>
-                </Form>
-                
-                <Form.Label>Total Value (US $)</Form.Label>
-                <Form.Control type="number" placeholder={this.state.price * this.state.shares} readOnly />
+                    
+                    <Form.Label>Total Value (US $)</Form.Label>
+                    <Form.Control type="number" placeholder={this.state.price * this.state.shares} readOnly />
 
-                <Form.Label>Shares Owned</Form.Label>
-                <Form.Control type="number" placeholder={this.state.total_shares} readOnly />
+                    <Form.Label>Shares Owned</Form.Label>
+                    <Form.Control type="number" placeholder={this.state.total_shares} readOnly />
 
-                <div className="sub_btn">
-                    <Button type="submit" variant="outline-secondary">Submit Transaction</Button>{' '}
-                </div>
+                    <div className="sub_btn">
+                        <Button type="submit" variant="outline-secondary">Submit Transaction</Button>{' '}
+                    </div>
                 </Form>
             </div>
 

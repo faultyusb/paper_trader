@@ -9,17 +9,27 @@
 }
 
 .purchase__container{
-    border: 5px solid white;
+    border: 5px solid blue;
     width: 45%;
+    /* height: 36.5rem; */
     border-radius: 10px;
+    float: right;
 }
 
 .stock__graph{
     border: 3px solid white;
     margin: 1rem;
-    width: 900px;
+}
 
-    
+.meta_info{
+    border: 3px solid purple;
+    width: 50%;
+    height: 41rem;
+    float: left;
+}
+
+.stock__table2{
+    margin-top: 5rem;
 }
 
 .all_stock__info{
@@ -29,7 +39,6 @@
     width: 500%;
     padding: 1rem;
     margin: 1rem;
-    display: flex;
 }
 
 

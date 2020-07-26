@@ -1,9 +1,7 @@
 
-.btn{
-    margin-left: 25%;
-    margin-top: 5%;
-    padding: 3%;
-    width: 50%;
+.purchase{
+    color: white;
+    font-size: 100%
 }
 
 #trans_buttons{
@@ -15,22 +13,29 @@
     width: 90%;
     font-size: 125%;
 }
-#trans_buttons h3 {
-    font-size: 125%;
-    margin-top: 5%;
-} 
+
+.inner{
+    border: 3px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inner h3 {
+    margin: auto;
+}
+
+.btn-primary{
+    margin-right: 1rem;
+}
 
 
-
-#butts {
-    margin-left: 1rem;
+.radio_btn {
+    margin-right: 25%;
     font-size: 100%;
 
 }
-.purchase{
-    color: white;
-    font-size: 100%
-}
+
 .purchase input{
     text-align: center;
     width: 50%;
@@ -40,6 +45,20 @@
 .purchase label{
     font-size: 125%;
     margin-left: 35%;
+}
+
+.alerts{
+    border: 2px solid red;
+    width: 90%;
+    height: 3.5rem;
+    margin: 1rem auto;
+}
+
+.alert{
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    height: 100%;
 }
 
 .select{
@@ -52,4 +71,11 @@
     text-align: center;
 }
 
+.btn{
+    margin-left: 25%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 50%;
+}
 
