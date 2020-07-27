@@ -1,9 +1,8 @@
 .sign__up{
-    border: 3px solid white;
+    border: 5px solid white;
     border-radius: 10px;
     float: center;
     width: 35%;
-    height: 40rem;
     margin: 10rem auto;
     padding: 2rem;
     color: white;
@@ -27,7 +26,7 @@
     margin: 2rem auto;
     text-align: center;
 }
-.switch h3 a {
+.switch h3,a {
     font-size: 1.5rem;
-    
+    background-color:  #17202A;
 }
