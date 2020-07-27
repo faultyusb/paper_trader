@@ -10,7 +10,7 @@ export default class portfolio extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            error: false,
+            notLoggedIn: true,
             stocks: []
         };
     }
@@ -22,11 +22,14 @@ export default class portfolio extends React.Component{
         })
             .then(response => response.json())
                 .then(data=>{
+                    // user is not logged in
                     if (data.errorMessage){
-                        this.setState({ error: true });
+                        console.log("must be signed in");
+                        // this.setState({ isLoggedIn: false });
                     }
                     else{
-                        this.setState({ stocks: data.stocks });
+                        console.log("why not working");
+                        this.setState({notLoggedIn: false, stocks: data.stocks });
                     }
                     });
 
@@ -34,9 +37,16 @@ export default class portfolio extends React.Component{
 
 
     render(){
-        if (this.state.error){
-            return <Redirect to="/SignIn"/>
+        if (this.state.notLoggedIn){
+            console.log("should not work")
+            // return <Redirect to="/SignIn"/>
+            return <Stock isLoggedIn = {this.state.notLoggedIn} />
         }
+
+
+
+
+
         if (this.state.stocks.length === 0){
             return <Stock missing={true} />;
         }
