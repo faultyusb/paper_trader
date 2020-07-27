@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Navigation.css';
 import { Link } from 'react-router-dom';
-import Logo from '../images/stock.webp';
+import Logo from '../images/stock_logo.jpg';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';

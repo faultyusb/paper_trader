@@ -10,6 +10,10 @@ img:hover{
     cursor: pointer;
 }
 
+img{
+    border-radius: 15px;
+}
+
  a:hover{
     text-decoration: none;
     color: inherit;
