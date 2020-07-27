@@ -57,7 +57,8 @@ class SignUp extends React.Component {
                 else{
                     console.log("Account created!")
                     this.setState({
-                        successMessage: {
+                        // redirect: true, 
+                        success: {
                             successStatus: true,
                             successMessage: data.successMessage
                         }

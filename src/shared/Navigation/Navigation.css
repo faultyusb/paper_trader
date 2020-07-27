@@ -19,6 +19,13 @@ img{
     color: inherit;
     background-color: #343A40;
  }
+ .lg_f{
+     background-color: #343A40;
+ }
+ .lg_f:hover{
+     color: #FFF;
+     cursor: default;
+ }
 
  .navbar-nav{
      background-color: #343A40;
@@ -46,10 +53,11 @@ img{
 
  .nav-link a{
      font-size: 1.9rem;
-     margin-right: 2rem;
+     /* margin-right: 2rem; */
  }
 
  .navbar{
      margin: 1rem;
+     margin-right: 2rem;
      border-radius: 10px;
  }
