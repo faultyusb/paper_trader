@@ -10,10 +10,8 @@ function Stock(props){
         return (
             <div className="stock__card">
                 <ul>
-                    <li>You must be logged in to view your portfolio.
-
-                        <Link to="/SignIn"> Click here to log in. </Link>
-                    </li>
+                    <li>You must be logged in to view your portfolio.</li>
+                    <li><Link to="/SignIn"> Click here to log in. </Link></li>
                 </ul>
             </div>
         );
@@ -33,12 +31,12 @@ function Stock(props){
     return (
         <div className="stock__card">
             <ul>
-                <li>Stock Symbol: {symbol}</li>
-                <li>Close: $ {price}</li>
-                <li>Number of Shares: {shares}</li>
-                <li>Total Volume: {volume}</li>
-                <li>Invested: $ {init_investment}</li>
-                <li>Current Value of Stock: $ {curr_value}</li>
+                <li><span className="meta" >Stock Symbol:</span> <span className="data" >{symbol}</span></li>
+                <li><span className="meta" >Close:</span> <span className="data" >$ {price}</span></li>
+                <li><span className="meta" >Number of Shares:</span> <span className="data" >{shares}</span></li>
+                <li><span className="meta" >Total Volume:</span> <span className="data" >{volume}</span></li>
+                <li><span className="meta" >Invested:</span> <span className="data" >$ {init_investment}</span></li>
+                <li><span className="meta" >Current Value of Stock:</span> <span className="data" >$ {curr_value}</span></li>
                 {/* <li>{props.date}</li> */}
         </ul>
 

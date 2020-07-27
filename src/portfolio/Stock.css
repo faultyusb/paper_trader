@@ -4,8 +4,9 @@
     padding: 2rem;
     margin: 2rem auto;
     justify-content: center;
-    width: 45%;
+    width: 75%;
     font-size: 1.3rem;
+    background-color: #051320;
 }
 
 .stock__card ul {
@@ -16,5 +17,18 @@
 
 .stock__card li {
     text-decoration: none;
+    text-align: right;
+    background-color: #051320;
 }
+
+.stock__card .data{
+    background-color: #051320;
+}
+
+.stock__card .meta{
+    color: grey;
+    float: left;
+    background-color: #051320;
+}
+
 

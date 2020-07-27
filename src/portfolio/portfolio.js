@@ -22,13 +22,8 @@ export default class portfolio extends React.Component{
         })
             .then(response => response.json())
                 .then(data=>{
-                    // user is not logged in
-                    if (data.errorMessage){
-                        console.log("must be signed in");
-                        // this.setState({ isLoggedIn: false });
-                    }
-                    else{
-                        console.log("why not working");
+                    // user is logged in
+                    if (!data.errorMessage){
                         this.setState({notLoggedIn: false, stocks: data.stocks });
                     }
                     });
@@ -38,14 +33,8 @@ export default class portfolio extends React.Component{
 
     render(){
         if (this.state.notLoggedIn){
-            console.log("should not work")
-            // return <Redirect to="/SignIn"/>
             return <Stock isLoggedIn = {this.state.notLoggedIn} />
         }
-
-
-
-
 
         if (this.state.stocks.length === 0){
             return <Stock missing={true} />;
@@ -61,23 +50,41 @@ export default class portfolio extends React.Component{
 
         return (
             <div className="portfolio__">
-                <h1>Initial Investment: $ {total_investment}</h1>
-                <h1>Current Value of Assets: $ {current_value}</h1>
-                <h1>Net Profit: $ {total_investment - current_value }</h1>
+                <div className="header_stats">
+                    {/* <h1><span className="meta">Initial Investment:</span> <span className="data">$ {total_investment}</span></h1>
+                    <h1><span className="meta">Current Value of Assets:</span> <span className="data">$ {current_value}</span></h1>
+                    <h1><span className="meta">Net Profit:</span> <span className="data">$ {total_investment - current_value }</span></h1> */}
 
-                {this.state.stocks.map(
-                    stock => {
-                        return <Stock 
-                                    symbol={stock.symbol}
-                                    price={stock.price}
-                                    volume={stock.volume}
-                                    shares={stock.shares}
-                                    init_investment = {stock.shares * stock.price}
-                                    curr_value = {stock.shares * stock.asset_value}
-                                    // date={stock.date}
-                                />
-                    }
-                )}
+                    <ul>
+                        <li>
+                            <span className="meta">Initial Investment:</span> <span className="data">$ {total_investment}</span>
+                        </li>
+                        <li>
+                            <span className="meta">Current Value of Assets:</span> <span className="data">$ {current_value}</span>
+                        </li>
+                        <li>
+                            <span className="meta">Net Profit:</span> <span className="data">$ {total_investment - current_value }</span>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+                <div className="stocks__">
+                    {this.state.stocks.map(
+                        stock => {
+                            return <Stock 
+                                        symbol={stock.symbol}
+                                        price={stock.price}
+                                        volume={stock.volume}
+                                        shares={stock.shares}
+                                        init_investment = {stock.shares * stock.price}
+                                        curr_value = {stock.shares * stock.asset_value}
+                                        // date={stock.date}
+                                    />
+                        }
+                    )}
+                </div>
             </div>
         );
     }
