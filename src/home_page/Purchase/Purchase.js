@@ -157,13 +157,13 @@ export default class Purchase extends React.Component{
                             </div>
                         </Form> */}
                     </div>
-                    <Form onChange={event=>(this.state.volume >= event.target.value) ? this.setState({shares: event.target.value}): this.setState({ shares: 0 })}>
+                    <Form onChange={event=> this.setState({shares: event.target.value})}>
                         <Form.Label>Enter Quantity</Form.Label>
                         <Form.Control pattern="^-?[0-9]\d*\.?\d*$" type="text" value={this.state.shares} onChange={e=>this.setState({shares: e.target.value})} placeholder="Enter quantity of stocks"/>
                     </Form>
                     
                     <Form.Label>Total Value (US $)</Form.Label>
-                    <Form.Control type="number" placeholder={this.state.price * this.state.shares} readOnly />
+                    <Form.Control type="number" placeholder={this.state.price * parseFloat(this.state.shares)} readOnly />
 
                     <Form.Label>Shares Owned</Form.Label>
                     <Form.Control type="number" placeholder={this.state.total_shares} readOnly />
