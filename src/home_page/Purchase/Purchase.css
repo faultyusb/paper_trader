@@ -12,7 +12,7 @@
 
 #trans_buttons{
     padding: 5%;
-    margin-top: 3%;
+    /* margin-top: 3%; */
     margin-left: 5%;
     display: flex;
     color: white;
@@ -28,7 +28,7 @@
 }
 
 .inner h3 {
-    margin: auto;
+    margin: 0.5rem auto;
     background-color: var(--purchase-bg);
 }
 
@@ -42,7 +42,6 @@
     margin-right: 25%;
     font-size: 100%;
     background-color: var(--purchase-bg);
-
 }
 
 .purchase input{
@@ -53,13 +52,14 @@
 }
 .purchase label{
     font-size: 125%;
-    margin-left: 35%;
+    margin-left: 39%;
     background-color: var(--purchase-bg);
+    justify-content: center;
 }
 
 .alerts{
     width: 90%;
-    height: 3.5rem;
+    /* height: 3.5rem; */
     margin: 1rem auto;
     background-color: var(--purchase-bg);
 }
@@ -85,7 +85,7 @@
 .btn{
     margin-left: 25%;
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding: 1rem;
     width: 50%;
     background-color: #17202A;
