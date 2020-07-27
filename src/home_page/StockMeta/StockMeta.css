@@ -1,15 +1,25 @@
+:root{
+    --meta_info-bg: #051320;
+}
 
 .meta__info{
     width: 100%;
-    border: 3px solid yellow;
+    border: 3px solid #D8DDE2;
     border-radius: 10px;
     padding: 2rem;
-    color: white;
+    color: #D8DDE2;
     font-size: 1vw;
     text-align: right;
+    background-color: var(--meta_info-bg);
+}
+
+.meta__info h1, h3, h4 {
+    background-color: var(--meta_info-bg);
+
 }
 
 .stock__meta__data{
     color: gray;
     float: left;
+    background-color: var(--meta_info-bg);
 }
