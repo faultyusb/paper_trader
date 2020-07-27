@@ -8,11 +8,19 @@
     color: white;
 }
 
+.sign__up .btn{
+    background-color: #343A40;
+    border: none;
+}
+
 
 .sign__up h2{
     text-align: center;
     font-size: 2rem;
+}
 
+.sign__up alert{
+    background-color: red;
 }
 
 .sign__up a{
@@ -23,7 +31,7 @@
 }
 
 .switch{
-    margin: 2rem auto;
+    margin: 0.5rem auto;
     text-align: center;
 }
 .switch h3,a {

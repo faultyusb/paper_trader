@@ -69,10 +69,10 @@ export default class Purchase extends React.Component{
             .then(response => response.json())
             .then(data => {
                 if (data.errorMessage){
-                    this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage} });
+                    this.setState({ error: {errorStatus: true, errorMessage: data.errorMessage}, success: {successStatus: false, successMessage: ""} });
                 }
                 else if (data.successMessage){
-                    this.setState({ success: {successStatus: true, successMessage: data.successMessage} });
+                    this.setState({ success: {successStatus: true, successMessage: data.successMessage}, error: {errorStatus: false, errorMessage: ""} });
                 }
             })
             .catch(err => console.log(err));

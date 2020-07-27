@@ -65,12 +65,13 @@ export default class Navigation extends React.Component{
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="justify-content-end" style={{ width: "100%" }}>
-                <Nav.Link >{this.state.first_name ? `Welcome, ${this.state.first_name}.` : <Link to="/SignIn">Login</Link>} {'  '} </Nav.Link>
-                <Nav.Link >{this.state.first_name ? null : <Link to="/SignUp">Sign up</Link>} {'  '} </Nav.Link>
-
                 <Nav.Link >
                     {this.state.error ? <Link to="/SignIn">My Portfolios</Link>: <Link to="/portfolio">My Portfolios</Link>}
                 </Nav.Link>
+                <Nav.Link >{this.state.first_name ? `Welcome, ${this.state.first_name}.` : <Link to="/SignIn">Login</Link>} {'  '} </Nav.Link>
+                <Nav.Link >{this.state.first_name ? null : <Link to="/SignUp">Sign up</Link>} {'  '} </Nav.Link>
+
+
                 
                 <Nav.Link onClick={this.logout}>
                     {this.state.first_name ? "Logout" : null}

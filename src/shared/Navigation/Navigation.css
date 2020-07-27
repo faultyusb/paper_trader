@@ -24,6 +24,8 @@ img:hover{
      padding: 1rem;
      background-color: #343A40;
  }
+
+
  .ttle{
      padding: 1rem;
      background-color: #343A40;
@@ -32,6 +34,10 @@ img:hover{
  #responsive-navbar-nav{
     background-color: #343A40;
 
+ }
+
+ .nav-link{
+     font-size: 1.9rem;
  }
 
  .nav-link a{

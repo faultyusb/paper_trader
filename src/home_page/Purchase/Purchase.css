@@ -22,7 +22,6 @@
 }
 
 .inner{
-    border: 3px solid green;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -59,7 +58,6 @@
 }
 
 .alerts{
-    border: 2px solid red;
     width: 90%;
     height: 3.5rem;
     margin: 1rem auto;
@@ -71,6 +69,7 @@
     margin: auto;
     border-radius: 10px;
     height: 100%;
+    width: 95%;
 }
 
 .select{
@@ -89,7 +88,7 @@
     margin-bottom: 1rem;
     padding: 1rem;
     width: 50%;
-    background-color: black;
+    background-color: #17202A;
 }
 
 .sub_btn{

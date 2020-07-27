@@ -89,7 +89,7 @@ class SignUp extends React.Component {
         } 
         return (
             <div>
-                {this.state.error.errorStatus ? <Alert variant="warning"> {this.state.error.errorMessage} </Alert> : null}
+                {this.state.error.errorStatus ? <Alert variant="danger"> {this.state.error.errorMessage} </Alert> : null}
                 {this.state.success.successStatus ? <Alert variant="primary"> {this.state.success.successMessage} </Alert> : null}
                 <div className="sign__up">
                     <h2>Sign up!</h2>
@@ -120,7 +120,7 @@ class SignUp extends React.Component {
                             <Form.Label>Please Re-enter your password</Form.Label>
                             <Form.Control type="password" placeholder="Password" onChange={(event)=> this.setState({password2: event.target.value})}/>
                         </Form.Group>
-                        
+
                         <Col xs="auto">
                             <Button variant="primary" type="submit">
                                 Submit

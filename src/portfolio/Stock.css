@@ -1,9 +1,11 @@
 .stock__card{
-    border: 3px solid white;
+    border: 5px solid white;
+    border-radius: 15px;
     padding: 2rem;
     margin: 2rem auto;
     justify-content: center;
     width: 45%;
+    font-size: 1.3rem;
 }
 
 .stock__card ul {

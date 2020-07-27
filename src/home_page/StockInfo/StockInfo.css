@@ -8,7 +8,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    /* border: 3px solid red; */
     justify-content: space-evenly;
     margin: 0rem auto;
     position: relative;
@@ -18,7 +17,6 @@
     border: 5px solid #6F767D;
     background-color: var(--purchase-bg);
     width: 45%;
-    /* height: 36.5rem; */
     border-radius: 10px;
     float: right;
 }
@@ -42,7 +40,6 @@
     width: 50%;
     height: 41rem;
     float: left;
-    /* background-color: var(--meta_info-bg); */
 }
 
 .stock__table2{
@@ -51,17 +48,13 @@
 
 .stock__table2 td, th{
     background-color: var(--meta_info-bg);
-
 }
 
 .all_stock__info{
-    
     justify-content: space-evenly;
-    /* border: 3px solid green; */
     width: 500%;
     padding: 1rem;
     margin: 1rem;
-    /* background-color: red; */
 }
 
 
