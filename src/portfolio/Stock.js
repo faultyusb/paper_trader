@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Stock.css';
 function Stock(props){
 
-    const {isLoggedIn, missing, symbol, price, shares, volume, init_investment, curr_value} = props;
+    const {isLoggedIn, missing, symbol, price, shares, volume, init_investment, curr_value, date} = props;
 
     if (isLoggedIn){
         return (
@@ -37,7 +37,7 @@ function Stock(props){
                 <li><span className="meta" >Total Volume:</span> <span className="data" >{volume}</span></li>
                 <li><span className="meta" >Invested:</span> <span className="data" >$ {init_investment}</span></li>
                 <li><span className="meta" >Current Value of Stock:</span> <span className="data" >$ {curr_value}</span></li>
-                {/* <li>{props.date}</li> */}
+                <li><span className="meta" >Date:</span> <span className="data" > {date}</span></li>
         </ul>
 
         </div>        

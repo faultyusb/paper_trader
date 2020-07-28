@@ -39,19 +39,17 @@ export default class portfolio extends React.Component{
     }
 
     onSubmitHandler(){
+        this.setState({
+            stocks: [],
+            wallet: 0,
+            stocksSold: 0
+        });
+
         fetch('/resetPort')
             .then(response => response.json())
                 .then(data => {
                     if (data.errorMessage){
                         console.log(data.errorMessage);
-                    }
-                    else{
-                        this.setState({
-                            stocks: [],
-                            wallet: 0,
-                            stocksSold: 0
-                        });
-                        window.location.reload();
                     }
                 });
         
@@ -109,7 +107,7 @@ export default class portfolio extends React.Component{
                                         shares={stock.shares}
                                         init_investment = {stock.shares * stock.price}
                                         curr_value = {stock.shares * stock.asset_value}
-                                        // date={stock.date}
+                                        date={stock.date.toString()}
                                     />);
                         }
                         
