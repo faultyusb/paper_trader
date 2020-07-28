@@ -40,7 +40,8 @@ export default class StockInfo extends React.Component{
         close: 0,
         volume: 0
       },
-    ]};
+    ]
+  };
   }
 
   componentDidMount(){
