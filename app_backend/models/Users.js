@@ -22,6 +22,14 @@ const UsersSchema = new mongoose.Schema(
             type: Date,
             default: Date.now
         },
+        wallet : {
+            type: Number,
+            default: 0
+        },
+        stocksSold : {
+            type: Number,
+            default: 0
+        },
         stocks: [
             {
                 symbol: String,
