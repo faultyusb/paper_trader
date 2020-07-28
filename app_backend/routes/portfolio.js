@@ -44,6 +44,16 @@ router.put('/stocktrans', (req, res) => {
                         console.log("Error in buying stocks.");
                     }
                 });
+
+
+                Users.findOneAndUpdate({_id: req.user._id}, {$set: {"wallet": req.user.wallet - (req.body.shares*req.body.price)}}, {useFindAndModify: false}, (err, res)=>{
+                    if (err){
+                        console.log("Something wrong with chaning the wallet.");
+                    }
+                });
+
+
+
                 return res.json({ successMessage: `Successfully bought ${req.body.shares} ${req.body.shares>1 ? "shares": "share"} of ${req.body.symbol}!` });
             });
     }
@@ -77,6 +87,14 @@ router.put('/stocktrans', (req, res) => {
                     }
                 });
             }
+
+            Users.findOneAndUpdate({_id: req.user._id}, {$set: {"wallet": req.user.wallet + (req.body.shares*req.body.price), "stocksSold": req.user.stocksSold + (req.body.shares*req.body.price)}}, {useFindAndModify: false}, (err, res)=>{
+                if (err){
+                    console.log("Something wrong with chaning the wallet.");
+                }
+            });
+
+
 
             return res.json({ successMessage: `Successfully sold ${req.body.shares} ${req.body.shares > 1 ? "shares": "share"} of ${req.body.symbol}!`});
         });
@@ -118,7 +136,7 @@ router.get('/updateStocks', ensureAuthenticated, (req, res) => {
                     .then(response => response.json())
                         .then(data => {
                             for (var key in data['Time Series (Daily)']){
-                                const new_price = parseInt(data[FUNCTION_TYPE][key]['4. close']);
+                                const new_price = (data[FUNCTION_TYPE][key]['4. close']);
                                 console.log(new_price);
                                 Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": stock.symbol}, {$set: {"stocks.$.asset_value": new_price}}, {useFindAndModify: false}, (err, res)=>{
                                     if (err){
@@ -134,9 +152,23 @@ router.get('/updateStocks', ensureAuthenticated, (req, res) => {
             .then(() => {
                 Users.findById(req.user._id)
                     .then(user => {
-                        return res.json({ stocks: user.stocks });
+                        return res.json({ stocks: user.stocks, wallet: user.wallet, stocksSold: user.stocksSold });
                     });
             });
+});
+
+
+router.get('/resetPort', ensureAuthenticated, (req, res) => {
+    console.log('Resetting!');
+    Users.findOneAndUpdate({_id: req.user._id}, {$set: {
+        "wallet": 0,
+        "stocksSold": 0,
+        "stocks": []
+    }}, {useFindAndModify: false}, (err, res)=>{
+        if (err){
+            console.log("Something wrong with selling stocks.");
+        }
+    });
 });
 
 
