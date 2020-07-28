@@ -8,7 +8,7 @@ function Stock(props){
 
     if (isLoggedIn){
         return (
-            <div className="stock__card">
+            <div className="not_logged">
                 <ul>
                     <li>You must be logged in to view your portfolio.</li>
                     <li><Link to="/SignIn"> Click here to log in. </Link></li>

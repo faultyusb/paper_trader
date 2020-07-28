@@ -33,6 +33,7 @@
 
 .header_stats .meta {
     background-color: #051320;
+    color: gray;
 }
 
 
@@ -42,6 +43,16 @@
     float: right;   
     background-color: #051320;
 
+}
+
+.header_stats .btn{
+    width: 75%;
+    margin-left: 12.8%;
+}
+
+.header_stats .reset_btn{
+    background-color: #051320;
+    justify-content: center;
 }
 
 
