@@ -1,0 +1,31 @@
+.sign__up{
+    border: 5px solid white;
+    border-radius: 10px;
+    float: center;
+    width: 35%;
+    margin: 10rem auto;
+    padding: 2rem;
+    color: white;
+}
+
+.sign__up h2{
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.sign__up a{
+    text-decoration: none;
+    background-color: transparent;
+    color: blue;
+    margin-left: 0;
+}
+
+.switch{
+    margin: 0.5rem auto;
+    text-align: center;
+}
+.switch h3,a {
+    font-size: 1.5rem;
+    background-color:  #17202A;
+}

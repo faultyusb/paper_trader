@@ -1,0 +1,63 @@
+
+ a {
+     text-decoration: none;
+     color: inherit;
+     padding: 0px;
+     background-color: #343A40;
+     font-size: 1.5rem;
+ }
+img:hover{
+    cursor: pointer;
+}
+
+img{
+    border-radius: 15px;
+}
+
+ a:hover{
+    text-decoration: none;
+    color: inherit;
+    background-color: #343A40;
+ }
+ .lg_f{
+     background-color: #343A40;
+ }
+ .lg_f:hover{
+     color: #FFF;
+     cursor: default;
+ }
+
+ .navbar-nav{
+     background-color: #343A40;
+ }
+
+ .navbar-brand{
+     padding: 1rem;
+     background-color: #343A40;
+ }
+
+
+ .ttle{
+     padding: 1rem;
+     background-color: #343A40;
+     font-size: 2.2rem;
+ }
+ #responsive-navbar-nav{
+    background-color: #343A40;
+
+ }
+
+ .nav-link{
+     font-size: 1.9rem;
+ }
+
+ .nav-link a{
+     font-size: 1.9rem;
+     /* margin-right: 2rem; */
+ }
+
+ .navbar{
+     margin: 1rem;
+     margin-right: 2rem;
+     border-radius: 10px;
+ }
