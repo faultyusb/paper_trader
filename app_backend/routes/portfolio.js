@@ -124,18 +124,16 @@ router.post('/ownedShares', (req, res) => {
 // First updates the price of each stock in the portfolio. Then, sends the updated portfolio from the db
 // to the front-end
 router.get('/updateStocks', ensureAuthenticated, (req, res) => {
-   
+    const { API_KEY, func_type} = require('../config/stockkey');
     Users.findOne({ _id: req.user._id })
         .then(user => {
             user.stocks.forEach( stock => {
                 const SYMBOL = stock.symbol;
-                const API_KEY = 'TNPG40VN9O3OQ4PW';
-                const FUNCTION_TYPE = 'Time Series (Daily)';
                 const API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${SYMBOL}&outputsize='compact'&apikey=${API_KEY}`;
                 fetch(API)
                     .then(response => response.json())
                         .then(data => {
-                            for (var key in data['Time Series (Daily)']){
+                            for (var key in data[func_type]){
                                 const new_price = (data[FUNCTION_TYPE][key]['4. close']);
                                 console.log(new_price);
                                 Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": stock.symbol}, {$set: {"stocks.$.asset_value": new_price}}, {useFindAndModify: false}, (err, res)=>{
