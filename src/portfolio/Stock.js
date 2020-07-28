@@ -35,8 +35,8 @@ function Stock(props){
                 <li><span className="meta" >Close:</span> <span className="data" >$ {price}</span></li>
                 <li><span className="meta" >Number of Shares:</span> <span className="data" >{shares}</span></li>
                 <li><span className="meta" >Total Volume:</span> <span className="data" >{volume}</span></li>
-                <li><span className="meta" >Invested:</span> <span className="data" >$ {init_investment}</span></li>
-                <li><span className="meta" >Current Value of Stock:</span> <span className="data" >$ {curr_value}</span></li>
+                <li><span className="meta" >Invested:</span> <span className="data" >$ {init_investment.toFixed(2)}</span></li>
+                <li><span className="meta" >Current Value of Stock:</span> <span className="data" >$ {curr_value.toFixed(2)}</span></li>
                 <li><span className="meta" >Date:</span> <span className="data" > {date}</span></li>
         </ul>
 
