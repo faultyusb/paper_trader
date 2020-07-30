@@ -124,7 +124,8 @@ router.post('/ownedShares', (req, res) => {
 // First updates the price of each stock in the portfolio. Then, sends the updated portfolio from the db
 // to the front-end
 router.get('/updateStocks', ensureAuthenticated, (req, res) => {
-    const { API_KEY, func_type} = require('../config/stockkey');
+    const { API_KEY, FUNCTION_TYPE} = require('../config/stockkey');
+    console.log(FUNCTION_TYPE);
     Users.findOne({ _id: req.user._id })
         .then(user => {
             user.stocks.forEach( stock => {
@@ -133,8 +134,11 @@ router.get('/updateStocks', ensureAuthenticated, (req, res) => {
                 fetch(API)
                     .then(response => response.json())
                         .then(data => {
-                            for (var key in data[func_type]){
-                                const new_price = (data[FUNCTION_TYPE][key]['4. close']);
+                            console.log("we working");
+                            console.log(data['Time Series (Daily)']);
+                            
+                            for (var key in data['Time Series (Daily)']){
+                                const new_price = (data['Time Series (Daily)'][key]['4. close']);
                                 console.log(new_price);
                                 Users.findOneAndUpdate({_id: req.user._id, "stocks.symbol": stock.symbol}, {$set: {"stocks.$.asset_value": new_price}}, {useFindAndModify: false}, (err, res)=>{
                                     if (err){
@@ -144,15 +148,15 @@ router.get('/updateStocks', ensureAuthenticated, (req, res) => {
                                 break;
                             }
                         })
+                        .then(() => {
+                            Users.findById(req.user._id)
+                                .then(user => {
+                                    return res.json({ stocks: user.stocks, wallet: user.wallet, stocksSold: user.stocksSold });
+                                });
+                        });
             });
 
         })
-            .then(() => {
-                Users.findById(req.user._id)
-                    .then(user => {
-                        return res.json({ stocks: user.stocks, wallet: user.wallet, stocksSold: user.stocksSold });
-                    });
-            });
 });
 
 
