@@ -18,7 +18,7 @@ A web application to view, manage, and buy/sell stocks!
 3. You may purchase or sell stocks using the menu in the bototm right corner. 
 4. Afterwards, you may navigate to "My Portfolios" to view and manage your stocks
 
-### About the App
+## About the App
 This applicationw was built using the MERN stack.
   - Fron-end developed with ReactJS and CSS
     - React-stock-charts was used for the graph
@@ -29,7 +29,7 @@ This applicationw was built using the MERN stack.
   
 
 
-### Important Notes
+## Important Notes
 - You may only purchase stocks from a maximum of 5 companies. This limit was chosen due to the limitation of the Alpha Advantage API
 
 
